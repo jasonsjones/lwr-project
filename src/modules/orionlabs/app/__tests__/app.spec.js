@@ -1,12 +1,12 @@
-import { createElement } from "lwc";
-import App from "orionlabs/app";
+import { createElement } from 'lwc';
+import App from 'orionlabs/app';
 
-describe("App component", () => {
+describe('App component', () => {
     let element;
 
     beforeEach(() => {
-        element = createElement("orionlabs-app", {
-            is: App,
+        element = createElement('orionlabs-app', {
+            is: App
         });
         document.body.appendChild(element);
     });
@@ -17,7 +17,7 @@ describe("App component", () => {
         }
     });
 
-    it("renders", () => {
+    it('renders', () => {
         expect(element).toBeTruthy();
     });
 });

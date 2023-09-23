@@ -8,6 +8,7 @@
         "build:css": "tailwindcss -i src/styles/styles.css -o src/assets/styles/tailwind.css",
         "clean": "rm -rf __lwr_cache__",
         "dev": "yarn build:css && lwr dev",
+        "lint": "eslint '**/*.js' --max-warnings 0",
         "start": "lwr start --mode prod",
         "start:compat": "lwr start --mode compat",
         "start:prod-compat": "lwr start --mode prod-compat",
@@ -19,8 +20,12 @@
     },
     "devDependencies": {
         "@lwc/jest-preset": "14.1.0",
+        "eslint": "8.50.0",
+        "eslint-config-prettier": "9.0.0",
+        "eslint-plugin-prettier": "5.0.0",
         "jest": "29.7.0",
         "jest-environment-jsdom": "29.7.0",
+        "prettier": "3.0.3",
         "tailwindcss": "3.3.3"
     },
     "engines": {

@@ -1,0 +1,13 @@
+{
+    "printWidth": 100,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "proseWrap": "always",
+    "overrides": [
+        {
+            "files": "src/modules/**/*.html",
+            "options": { "parser": "lwc" }
+        }
+    ]
+}
