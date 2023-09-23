@@ -9,11 +9,17 @@
         "dev": "lwr dev",
         "start": "lwr start --mode prod",
         "start:compat": "lwr start --mode compat",
-        "start:prod-compat": "lwr start --mode prod-compat"
+        "start:prod-compat": "lwr start --mode prod-compat",
+        "test": "jest"
     },
     "dependencies": {
         "lwc": "3.3.3",
         "lwr": "0.10.6"
+    },
+    "devDependencies": {
+        "@lwc/jest-preset": "14.1.0",
+        "jest": "29.7.0",
+        "jest-environment-jsdom": "29.7.0"
     },
     "engines": {
         "node": ">=16.20 <19"
