@@ -3,7 +3,7 @@
     "port": 4200,
     "assets": [
         {
-            "alias": "assetDir",
+            "alias": "assetsDir",
             "dir": "$rootDir/src/assets",
             "urlPath": "/public/assets"
         }
@@ -13,6 +13,7 @@
             "id": "home",
             "path": "/*",
             "rootComponent": "orionlabs/app",
+            "layoutTemplate": "$layoutsDir/main_layout.njk",
             "bootstrap": {
                 "syntheticShadow": true
             }
