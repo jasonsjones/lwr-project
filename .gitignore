@@ -1,0 +1,9 @@
+node_modules
+__lwr_cache__
+.env
+coverage
+pageObjects
+build
+tailwind.css
+**/generated
+prisma/*.db*

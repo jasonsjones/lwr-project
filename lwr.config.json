@@ -1,0 +1,21 @@
+{
+    "lwc": { "modules": [{ "dir": "$rootDir/src/modules" }] },
+    "port": 4200,
+    "assets": [
+        {
+            "alias": "assetDir",
+            "dir": "$rootDir/src/assets",
+            "urlPath": "/public/assets"
+        }
+    ],
+    "routes": [
+        {
+            "id": "home",
+            "path": "/*",
+            "rootComponent": "orionlabs/app",
+            "bootstrap": {
+                "syntheticShadow": true
+            }
+        }
+    ]
+}

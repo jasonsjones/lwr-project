@@ -1,0 +1,21 @@
+{
+    "name": "lwr-project",
+    "version": "0.0.1",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "clean": "rm -rf __lwr_cache__",
+        "dev": "lwr dev",
+        "start": "lwr start --mode prod",
+        "start:compat": "lwr start --mode compat",
+        "start:prod-compat": "lwr start --mode prod-compat"
+    },
+    "dependencies": {
+        "lwc": "3.3.3",
+        "lwr": "0.10.6"
+    },
+    "engines": {
+        "node": ">=16.20 <19"
+    }
+}
