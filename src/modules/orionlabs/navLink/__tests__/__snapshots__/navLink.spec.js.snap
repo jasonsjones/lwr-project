@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavLink component renders 1`] = `
+<orionlabs-nav-link>
+  #shadow-root(open)
+    <a
+      class="text-xl"
+    />
+</orionlabs-nav-link>
+`;

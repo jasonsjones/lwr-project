@@ -7,22 +7,42 @@ exports[`NavBar component renders 1`] = `
       class="px-8 py-4 bg-primary-900 text-gray-200"
     >
       <nav
-        class="flex"
+        class="flex items-center gap-8"
       >
-        <div
-          class="flex flex-col items-end"
+        <a
+          href="/"
         >
           <div
-            class="text-3xl font-bold uppercase hover:text-white"
+            class="flex flex-col items-end"
           >
-            Orion
+            <div
+              class="text-3xl font-bold uppercase hover:text-white"
+            >
+              Orion
+            </div>
+            <div
+              class="-mr-2 px-2 text-lg text-white font-semibold bg-primary-400 rounded-full"
+            >
+              labs
+            </div>
           </div>
-          <div
-            class="-mr-2 px-2 text-lg text-white font-semibold bg-primary-400 rounded-full"
-          >
-            labs
-          </div>
-        </div>
+        </a>
+        <orionlabs-nav-link>
+          #shadow-root(open)
+            <a
+              class="text-xl"
+            >
+              Home
+            </a>
+        </orionlabs-nav-link>
+        <orionlabs-nav-link>
+          #shadow-root(open)
+            <a
+              class="text-xl"
+            >
+              About
+            </a>
+        </orionlabs-nav-link>
       </nav>
     </header>
 </orionlabs-navbar>

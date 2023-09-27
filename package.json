@@ -23,6 +23,7 @@
         "@babel/eslint-parser": "7.22.15",
         "@lwc/eslint-plugin-lwc": "1.6.3",
         "@lwc/jest-preset": "14.1.0",
+        "@salesforce/wire-service-jest-util": "4.0.2",
         "eslint": "8.50.0",
         "eslint-config-prettier": "9.0.0",
         "eslint-plugin-prettier": "5.0.0",

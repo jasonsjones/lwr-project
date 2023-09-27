@@ -2197,6 +2197,11 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
+"@salesforce/wire-service-jest-util@4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/wire-service-jest-util/-/wire-service-jest-util-4.0.2.tgz#98de773593820df7ea30cc85b849860381a02417"
+  integrity sha512-oFrsd2by6NfUtzAa1Dttt+51/9fQ9Nhpy8Sm2pc5xvVty3jQcuNv5u4RV+3Rsk6OCKIEqjchkJJHM0OhbRVQKA==
+
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
