@@ -7,12 +7,14 @@
     "scripts": {
         "build:css": "tailwindcss -i src/styles/styles.css -o src/assets/styles/tailwind.css",
         "clean": "rm -rf __lwr_cache__",
-        "dev": "yarn build:css && lwr dev",
+        "dev": "concurrently -n CSS,LWR -c magenta,cyan \"yarn watch:css\" \"yarn start:dev\"",
         "lint": "eslint '**/*.js' --max-warnings 0",
         "start": "lwr start --mode prod",
+        "start:dev": "lwr dev",
         "start:compat": "lwr start --mode compat",
         "start:prod-compat": "lwr start --mode prod-compat",
-        "test": "jest"
+        "test": "jest",
+        "watch:css": "yarn build:css --watch"
     },
     "dependencies": {
         "lwc": "3.3.3",
@@ -24,6 +26,7 @@
         "@lwc/eslint-plugin-lwc": "1.6.3",
         "@lwc/jest-preset": "14.1.0",
         "@salesforce/wire-service-jest-util": "4.0.2",
+        "concurrently": "8.2.1",
         "eslint": "8.50.0",
         "eslint-config-prettier": "9.0.0",
         "eslint-plugin-prettier": "5.0.0",
