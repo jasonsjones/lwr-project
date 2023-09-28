@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`About component matches snapshot 1`] = `
-<orion_labs-about>
+<orionlabs-about>
   #shadow-root(open)
     <div
       class="w-1/2 mx-auto text-gray-700"
@@ -27,5 +27,5 @@ exports[`About component matches snapshot 1`] = `
         Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Nulla consequat massa quis enim. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Praesent nonummy mi in odio. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Donec vitae orci sed dolor rutrum auctor. Curabitur nisi. Curabitur a felis in nunc fringilla tristique.
       </p>
     </div>
-</orion_labs-about>
+</orionlabs-about>
 `;

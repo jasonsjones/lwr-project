@@ -9,23 +9,27 @@ jest.mock('lwr/navigation', () => {
     };
 });
 
-describe('NavLink component', () => {
-    let element;
-
-    beforeEach(() => {
-        element = createElement('orionlabs-nav-link', {
-            is: NavLink
-        });
-        document.body.appendChild(element);
+async function createComponent(prop = {}) {
+    const element = createElement('orionlabs-nav-link', {
+        is: NavLink
     });
 
+    Object.assign(element, prop);
+    document.body.appendChild(element);
+    await Promise.resolve();
+
+    return element;
+}
+
+describe('NavLink component', () => {
     afterEach(() => {
         while (document.body.firstChild) {
             document.body.removeChild(document.body.firstChild);
         }
     });
 
-    it('renders', () => {
+    it('renders', async () => {
+        const element = await createComponent();
         expect(element).toMatchSnapshot();
     });
 });
