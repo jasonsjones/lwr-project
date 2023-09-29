@@ -17,10 +17,6 @@ export default class NavLink extends LightningElement {
 
     @api label;
 
-    get homePageReference() {
-        return generatePageReference('home');
-    }
-
     get aboutPageReference() {
         return generatePageReference('namedPage', { pageName: 'about' });
     }
@@ -29,9 +25,6 @@ export default class NavLink extends LightningElement {
         event.preventDefault();
         if (this.navContext) {
             switch (this.label) {
-                case 'Home':
-                    navigate(this.navContext, this.homePageReference);
-                    break;
                 case 'About':
                     navigate(this.navContext, this.aboutPageReference);
                     break;
@@ -44,9 +37,6 @@ export default class NavLink extends LightningElement {
     connectedCallback() {
         if (this.navContext) {
             switch (this.label) {
-                case 'Home':
-                    this.url = generateUrl(this.navContext, this.homePageReference);
-                    break;
                 case 'About':
                     this.url = generateUrl(this.navContext, this.aboutPageReference);
                     break;
