@@ -6,11 +6,11 @@ exports[`About component matches snapshot 1`] = `
     <div
       class="w-1/2 mx-auto text-gray-700"
     >
-      <h1
+      <h2
         class="text-3xl text-center my-4"
       >
-        About Component
-      </h1>
+        About
+      </h2>
       <p
         class="mb-2 text-xl"
       >

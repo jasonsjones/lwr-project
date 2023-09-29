@@ -32,14 +32,6 @@ exports[`NavBar component renders 1`] = `
             <a
               class="text-xl hover:text-white"
             >
-              Home
-            </a>
-        </orionlabs-nav-link>
-        <orionlabs-nav-link>
-          #shadow-root(open)
-            <a
-              class="text-xl hover:text-white"
-            >
               About
             </a>
         </orionlabs-nav-link>
