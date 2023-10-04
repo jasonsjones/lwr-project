@@ -1,10 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavLink component renders 1`] = `
+exports[`NavLink component renders about link without active styles 1`] = `
 <orionlabs-nav-link>
   #shadow-root(open)
     <a
-      class="text-xl hover:text-white"
-    />
+      class="text-xl py-2 hover:text-white md:text-2xl"
+    >
+      About
+    </a>
+</orionlabs-nav-link>
+`;
+
+exports[`NavLink component renders home link with active styles 1`] = `
+<orionlabs-nav-link>
+  #shadow-root(open)
+    <a
+      class="text-xl py-2 hover:text-white md:text-2xl border-b-2 hover:border-white"
+    >
+      Home
+    </a>
 </orionlabs-nav-link>
 `;

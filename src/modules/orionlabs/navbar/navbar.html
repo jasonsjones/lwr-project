@@ -11,7 +11,13 @@
                     </div>
                 </div>
             </a>
-            <orionlabs-nav-link label="About"></orionlabs-nav-link>
+            <template for:each={navLinks} for:item="link">
+                <orionlabs-nav-link
+                    key={link.id}
+                    label={link.label}
+                    page-reference={link.pageReference}
+                ></orionlabs-nav-link>
+            </template>
         </nav>
     </header>
 </template>
