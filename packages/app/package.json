@@ -1,0 +1,34 @@
+{
+    "name": "@lwr-project/app",
+    "version": "0.0.1",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build:css": "tailwindcss -i src/styles/styles.css -o src/assets/styles/tailwind.css",
+        "clean": "rm -rf __lwr_cache__",
+        "dev": "concurrently -n CSS,LWR -c magenta,cyan \"yarn watch:css\" \"yarn start:dev\"",
+        "lint": "eslint '**/*.js' --max-warnings 0",
+        "start": "lwr start --mode prod",
+        "start:dev": "lwr dev",
+        "start:compat": "lwr start --mode compat",
+        "start:prod-compat": "lwr start --mode prod-compat",
+        "test": "jest",
+        "watch:css": "yarn build:css --watch"
+    },
+    "dependencies": {
+        "lwc": "3.3.3",
+        "lwr": "0.10.6"
+    },
+    "devDependencies": {
+        "@babel/core": "7.23.0",
+        "@babel/eslint-parser": "7.22.15",
+        "@lwc/eslint-plugin-lwc": "1.6.3",
+        "@lwc/jest-preset": "14.1.0",
+        "@salesforce/wire-service-jest-util": "4.0.2",
+        "tailwindcss": "3.3.3"
+    },
+    "engines": {
+        "node": ">=16.20 <19"
+    }
+}
