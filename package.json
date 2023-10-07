@@ -6,7 +6,9 @@
         "packages/*"
     ],
     "scripts": {
-        "dev": "yarn workspaces run dev",
+        "dev": "concurrently -n API,APP -c blue,green \"yarn dev:api\" \"yarn dev:app\"",
+        "dev:api": "yarn workspace @lwr-project/api run dev",
+        "dev:app": "yarn workspace @lwr-project/app run dev",
         "lint": "yarn workspaces run lint",
         "test": "yarn workspaces run test"
     },
