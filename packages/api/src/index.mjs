@@ -4,5 +4,5 @@ import { app } from './server.mjs';
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-    console.log(`LWR api listening on port ${port}`);
+    console.log(`Express API listening on port ${port}`);
 });
