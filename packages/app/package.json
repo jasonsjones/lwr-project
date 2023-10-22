@@ -5,6 +5,7 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "build": "yarn build:css && yarn generate:adapters",
         "build:css": "tailwindcss -i src/styles/styles.css -o src/assets/styles/tailwind.css",
         "clean": "rm -rf __lwr_cache__ src/modules/orion/adapters/generated",
         "dev": "concurrently -n CSS,LWR -c magenta,cyan \"yarn watch:css\" \"yarn start:dev\"",

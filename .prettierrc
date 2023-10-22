@@ -6,7 +6,7 @@
     "proseWrap": "always",
     "overrides": [
         {
-            "files": "src/modules/**/*.html",
+            "files": "packages/app/src/modules/**/*.html",
             "options": { "parser": "lwc" }
         }
     ]

@@ -1,0 +1,45 @@
+<template>
+    <div class="w-3/4 mx-auto">
+        <h1 class="text-4xl text-center text-gray-700 mt-4 mb-8">User List</h1>
+        <div class="not-prose py-4 bg-slate-200 rounded-xl">
+            <div class="overflow-hidden my-2">
+                <table class="border-collapse table-fixed w-full">
+                    <thead>
+                        <tr>
+                            <th
+                                class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
+                            >
+                                Id
+                            </th>
+                            <th
+                                class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
+                            >
+                                Name
+                            </th>
+                            <th
+                                class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
+                            >
+                                Email
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={users} for:item="user">
+                            <tr key={user.id}>
+                                <td class="border-b border-slate-600 p-4 pl-8 text-slate-500">
+                                    {user.id}
+                                </td>
+                                <td class="border-b border-slate-600 p-4 pl-8 text-slate-500">
+                                    {user.displayName}
+                                </td>
+                                <td class="border-b border-slate-600 p-4 pl-8 text-slate-500">
+                                    {user.email}
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
