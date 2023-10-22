@@ -17,6 +17,9 @@ export default class NamedPageHandler {
             case 'about':
                 viewGetter = () => import('orionlabs/about');
                 break;
+            case 'users':
+                viewGetter = () => import('orionlabs/userList');
+                break;
             default:
                 return;
         }
