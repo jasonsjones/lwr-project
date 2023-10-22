@@ -27,5 +27,12 @@
     },
     "prisma": {
         "seed": "node prisma/seed.mjs"
-    }
+    },
+"engines": {
+    "node": ">=18 <19"
+},
+"volta": {
+    "node": "18.18.2"
 }
+}
+
