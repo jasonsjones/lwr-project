@@ -2,6 +2,7 @@
     "name": "@lwr-project/api",
     "version": "1.0.0",
     "scripts": {
+        "clean:all": "rm -rf node_modules",
         "db:migrate:dev": "yarn prisma migrate dev",
         "db:seed": "yarn prisma db seed",
         "db:studio": "yarn prisma studio",

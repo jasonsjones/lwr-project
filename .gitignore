@@ -8,3 +8,4 @@ tailwind.css
 **/generated
 prisma/*.db*
 data
+dist
