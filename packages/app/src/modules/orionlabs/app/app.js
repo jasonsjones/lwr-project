@@ -27,4 +27,13 @@ export default class App extends LightningElement {
     router = createRouter({ routes });
 
     @api message = 'Hello World!';
+
+    get usersPageRef() {
+        return {
+            type: 'namedPage',
+            attributes: {
+                pageName: 'users'
+            }
+        };
+    }
 }
