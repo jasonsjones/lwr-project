@@ -8,24 +8,38 @@
             <section class="sm:ml-6">
                 <h3 class="text-xl font-semibold my-4 sm:mt-0 text-center sm:text-left">Connect</h3>
                 <div class="flex justify-around gap-x-4">
-                    <svg
-                        class="inline-block fill-current"
-                        viewBox="0 0 16 16"
-                        version="1.1"
-                        width="32"
-                        aria-hidden="true"
+                    <orionlabs-link
+                        navigate-to={githubPageRef}
+                        relationship="noopener noreferrer"
+                        class="hover:text-primary-400"
+                        open-in-new-tab="true"
                     >
-                        <path fill-rule="evenodd" d={githubLogo}></path>
-                    </svg>
+                        <svg
+                            class="inline-block fill-current"
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            width="32"
+                            aria-hidden="true"
+                        >
+                            <path fill-rule="evenodd" d={githubLogo}></path>
+                        </svg>
+                    </orionlabs-link>
 
-                    <svg
-                        class="inline-block fill-current"
-                        viewBox="0 0 24 24"
-                        width="32"
-                        aria-hidden="true"
+                    <orionlabs-link
+                        navigate-to={twitterPageRef}
+                        relationship="noopener noreferrer"
+                        class="hover:text-primary-400"
+                        open-in-new-tab="true"
                     >
-                        <path d={twitterLogo}></path>
-                    </svg>
+                        <svg
+                            class="inline-block fill-current"
+                            viewBox="0 0 24 24"
+                            width="32"
+                            aria-hidden="true"
+                        >
+                            <path d={twitterLogo}></path>
+                        </svg>
+                    </orionlabs-link>
                 </div>
             </section>
         </div>

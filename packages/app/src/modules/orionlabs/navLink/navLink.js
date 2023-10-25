@@ -23,7 +23,7 @@ export default class NavLink extends LightningElement {
     }
 
     get computeClass() {
-        return `text-xl py-2 hover:text-white md:text-2xl ${
+        return `text-xl pb-1 hover:text-white ${
             this.isActiveLink ? 'border-b-2 hover:border-white' : ''
         }`;
     }

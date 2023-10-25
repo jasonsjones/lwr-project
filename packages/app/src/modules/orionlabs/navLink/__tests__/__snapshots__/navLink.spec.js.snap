@@ -4,7 +4,7 @@ exports[`NavLink component renders about link without active styles 1`] = `
 <orionlabs-nav-link>
   #shadow-root(open)
     <a
-      class="text-xl py-2 hover:text-white md:text-2xl"
+      class="text-xl pb-1 hover:text-white"
     >
       About
     </a>
@@ -15,7 +15,7 @@ exports[`NavLink component renders home link with active styles 1`] = `
 <orionlabs-nav-link>
   #shadow-root(open)
     <a
-      class="text-xl py-2 hover:text-white md:text-2xl border-b-2 hover:border-white"
+      class="text-xl pb-1 hover:text-white border-b-2 hover:border-white"
     >
       Home
     </a>
