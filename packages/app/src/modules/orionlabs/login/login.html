@@ -1,0 +1,34 @@
+<template>
+    <div class="w-2/3 mx-auto flex flex-col items-center">
+        <h1 class="text-3xl font-bold text-slate-700 mt-8 mb-4">Login to Your Account</h1>
+        <div class="md:w-1/2 mt-4">
+            <form class="border-2 border-slate-300 rounded-md p-8">
+                <div class="mt-8">
+                    <orion-input
+                        lwc:ref="email"
+                        type="email"
+                        label="Email"
+                        input-id="email"
+                    ></orion-input>
+                </div>
+                <div class="mt-8">
+                    <orion-input
+                        lwc:ref="password"
+                        type="password"
+                        label="Password"
+                        input-id="password"
+                    ></orion-input>
+                </div>
+                <div class="flex justify-end gap-x-4">
+                    <button
+                        type="submit"
+                        class="mt-8 grow py-3 bg-primary-700 text-gray-200 rounded-md hover:bg-primary-900"
+                        onclick={handleLogin}
+                    >
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>

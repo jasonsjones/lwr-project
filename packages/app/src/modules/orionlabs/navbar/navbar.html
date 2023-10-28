@@ -1,6 +1,6 @@
 <template>
     <header class="px-8 py-4 bg-primary-900 text-gray-200">
-        <nav class="flex items-center gap-8">
+        <nav class="flex gap-8">
             <a href="/" onclick={handleHomeClick}>
                 <div class="flex flex-col items-end">
                     <div class="text-3xl font-bold uppercase hover:text-white">Orion</div>
@@ -11,13 +11,22 @@
                     </div>
                 </div>
             </a>
-            <template for:each={navLinks} for:item="link">
-                <orionlabs-nav-link
-                    key={link.id}
-                    label={link.label}
-                    page-reference={link.pageReference}
-                ></orionlabs-nav-link>
-            </template>
+            <div class="flex grow items-center justify-between">
+                <template for:each={leftNavLinks} for:item="link">
+                    <orionlabs-nav-link
+                        key={link.id}
+                        label={link.label}
+                        page-reference={link.pageReference}
+                    ></orionlabs-nav-link>
+                </template>
+                <template for:each={rightNavLinks} for:item="link">
+                    <orionlabs-nav-link
+                        key={link.id}
+                        label={link.label}
+                        page-reference={link.pageReference}
+                    ></orionlabs-nav-link>
+                </template>
+            </div>
         </nav>
     </header>
 </template>

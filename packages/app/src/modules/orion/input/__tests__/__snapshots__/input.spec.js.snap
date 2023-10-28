@@ -7,6 +7,7 @@ exports[`orion-input renders an input and label 1`] = `
       class="relative flex flex-col"
     >
       <input
+        autocomplete="off"
         class="peer h-10 border-b-2 border-gray-300 placeholder-transparent bg-transparent focus:border-primary-400 focus:outline-none"
         id="test-0"
         placeholder="Test Input"
