@@ -1,24 +1,6 @@
 <template>
     <lwr-router-container router={router}>
         <orionlabs-page-layout>
-            <div class="w-1/2 mx-auto mt-4">
-                <div class="flex flex-col items-center">
-                    <h1 class="text-4xl">Lightning Web Runtime!</h1>
-                    <img
-                        class="rounded-2xl mt-6"
-                        src="/public/assets/recipes-logo.png"
-                        alt="logo"
-                        width="240"
-                        height="240"
-                    />
-                    <orionlabs-link
-                        class="mt-4"
-                        navigate-to={usersPageRef}
-                        relationship="noopener noreferrer"
-                        >Checkout the users!</orionlabs-link
-                    >
-                </div>
-            </div>
             <lwr-outlet>
                 <div slot="error">Oooops! View component cannot be displayed.</div>
             </lwr-outlet>
