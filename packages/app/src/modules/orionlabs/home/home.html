@@ -1,5 +1,21 @@
 <template>
-    <div class="w-1/2 mx-auto text-gray-700">
+    <div class="w-1/2 mx-auto mt-4 text-gray-700">
+        <div class="flex flex-col items-center">
+            <h1 class="text-4xl">Lightning Web Runtime!</h1>
+            <img
+                class="rounded-2xl mt-6"
+                src="/public/assets/recipes-logo.png"
+                alt="logo"
+                width="240"
+                height="240"
+            />
+            <orionlabs-link
+                class="mt-4"
+                navigate-to={usersPageRef}
+                relationship="noopener noreferrer"
+                >Checkout the users!</orionlabs-link
+            >
+        </div>
         <h2 class="text-3xl text-center text-gray-700 my-4">Home</h2>
         <p class="mb-2 text-xl">
             Fusce commodo aliquam arcu. Quisque rutrum. Nulla porta dolor. Etiam rhoncus. Nullam
