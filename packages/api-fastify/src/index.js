@@ -1,7 +1,7 @@
-import { buildServer } from './server.mjs';
+import { buildServer } from './server.js';
 const port = process.env.PORT || 3001;
 
-async function cleanUp(fastify) {
+async function registerCleanUpActions(fastify) {
     ['SIGINT', 'SIGTERM'].forEach((signal) => {
         process.on(signal, async () => {
             await fastify.close();
@@ -12,7 +12,8 @@ async function cleanUp(fastify) {
 
 async function main() {
     const fastify = await buildServer();
-    // await cleanUp(fastify);
+    await registerCleanUpActions(fastify);
+
     try {
         await fastify.listen({ port, host: '0.0.0.0' });
     } catch (err) {
