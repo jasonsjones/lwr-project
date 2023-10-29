@@ -1,0 +1,19 @@
+{
+    "name": "@lwr-project/api-fastify",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "dev": "NODE_ENV=development nodemon src/index.mjs",
+        "lint": "eslint '**/*.{js,mjs}' --max-warnings 0",
+        "test": "echo 'api tests not yet implemented'"
+    },
+    "devDependencies": {
+        "nodemon": "3.0.1",
+        "pino-pretty": "10.2.3"
+    },
+    "dependencies": {
+        "dotenv": "16.3.1",
+        "fastify": "4.24.3"
+    }
+}
