@@ -9,14 +9,25 @@
         "lint": "eslint '**/*.{js,mjs}' --max-warnings 0",
         "test": "vitest --run"
     },
+    "dependencies": {
+        "@prisma/client": "5.4.1",
+        "dotenv": "16.3.1",
+        "fastify": "4.24.3"
+    },
     "devDependencies": {
         "nodemon": "3.0.1",
         "pino-pretty": "10.2.3",
+        "prisma": "5.4.1",
         "vite": "4.5.0",
         "vitest": "0.34.6"
     },
-    "dependencies": {
-        "dotenv": "16.3.1",
-        "fastify": "4.24.3"
+    "prisma": {
+        "seed": "node prisma/seed.js"
+    },
+    "engines": {
+        "node": ">=18 <19"
+    },
+    "volta": {
+        "node": "18.18.2"
     }
 }
