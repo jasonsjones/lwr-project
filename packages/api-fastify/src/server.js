@@ -1,5 +1,8 @@
 import Fastify from 'fastify';
 import indexRoutes from './index/routes.js';
+import userRoutes from './user/routes.js';
+
+const BASE_URL_V1 = '/api/v1';
 
 const envToLogger = {
     development: {
@@ -16,6 +19,7 @@ export async function buildServer() {
     });
 
     app.register(indexRoutes);
+    app.register(userRoutes, { prefix: `${BASE_URL_V1}/users` });
 
     return app;
 }
