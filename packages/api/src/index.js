@@ -1,5 +1,5 @@
 import { buildServer } from './server.js';
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 async function registerCleanUpActions(fastify) {
     ['SIGINT', 'SIGTERM'].forEach((signal) => {
