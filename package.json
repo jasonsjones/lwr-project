@@ -7,8 +7,7 @@
     ],
     "scripts": {
         "clean:all": "yarn workspaces run clean:all && rm -rf node_modules",
-        "dev": "concurrently -n API,API-v2,APP -c blue,magenta,green \"yarn dev:api\" \"yarn dev:api-fastify\" \"yarn dev:app\"",
-        "dev:api": "yarn workspace @lwr-project/api run dev",
+        "dev": "concurrently -n API,APP -c blue,green  \"yarn dev:api-fastify\" \"yarn dev:app\"",
         "dev:api-fastify": "yarn workspace @lwr-project/api-fastify run dev",
         "dev:app": "yarn workspace @lwr-project/app run dev",
         "lint": "yarn workspaces run lint",
