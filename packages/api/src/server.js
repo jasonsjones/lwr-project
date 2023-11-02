@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 import fastifyCookie from '@fastify/cookie';
 import fastifySession from '@fastify/session';
 import fastifyPassport from '@fastify/passport';
+import fastifyCors from '@fastify/cors';
 import LocalStrategy from './auth/strategies/local.js';
 import indexRoutes from './index/routes.js';
 import userRoutes from './user/routes.js';
@@ -23,6 +24,7 @@ export async function buildServer() {
         logger: envToLogger[process.env.NODE_ENV] ?? true
     });
 
+    app.register(fastifyCors);
     app.register(fastifyCookie);
     app.register(fastifySession, { secret: 'super secret session secret ksjkdjoiiiwbnviwuruiowh' });
     app.register(fastifyPassport.initialize());
