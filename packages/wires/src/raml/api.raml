@@ -4,6 +4,27 @@ version: v1
 baseUri: http://localhost:3000/api/v1
 
 types:
+    AuthResponse:
+        type: object 
+        properties:
+            accessToken: string | nil
+            user: User | nil 
+
+    UnauthorizedResponse:
+        type: object 
+        properties:
+            message: string
+
+    LoginInput:
+        type: object
+        properties:
+            email:
+                type: string
+                required: true
+            password:
+                type: string
+                required: true
+
     User:
         type: object
         properties:
@@ -14,6 +35,7 @@ types:
             roles: string[]
             createdAt: string
             updatedAt: string
+
     UserList:
         type: object
         properties:
@@ -27,3 +49,21 @@ types:
                 body:
                     application/json:
                         type: UserList
+/auth:
+    /login:
+        post:
+            description: Authenticate to application
+            body:
+                application/json:
+                    type: LoginInput
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: AuthResponse
+                401:
+                    body:
+                        application/json:
+                            type: UnauthorizedResponse
+                            example: |
+                                { "message": "Unauthorized" }

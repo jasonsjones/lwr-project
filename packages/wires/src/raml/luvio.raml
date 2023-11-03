@@ -8,12 +8,21 @@ uses:
 (luvio.ttl): 30000
 
 types:
+    AuthResponse:
+        (luvio.key):
+            accessToken: accessToken
+
     User:
         (luvio.key):
             id: id
         (luvio.opaque): true
         (luvio.ttl): 20000
 
+/auth:
+    /login:
+        post:
+            (luvio.adapter):
+                name: login
 /users:
     get:
         (luvio.adapter):
