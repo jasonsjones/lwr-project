@@ -1,5 +1,6 @@
-import { api, LightningElement } from 'lwc';
 import { createRouter } from 'lwr/router';
+import AuthContextProvider from 'orion/authContextProvider';
+import eventEmitter from 'orion/eventEmitter';
 
 const routes = [
     {
@@ -23,10 +24,8 @@ const routes = [
     }
 ];
 
-export default class App extends LightningElement {
+export default class App extends AuthContextProvider {
     router = createRouter({ routes });
-
-    @api message = 'Hello World!';
 
     get usersPageRef() {
         return {
@@ -35,5 +34,17 @@ export default class App extends LightningElement {
                 pageName: 'users'
             }
         };
+    }
+
+    connectedCallback() {
+        eventEmitter.subscribe('user-login', (data) => {
+            const { accessToken, user } = data;
+            this.updateContext({
+                value: {
+                    accessToken,
+                    user
+                }
+            });
+        });
     }
 }
