@@ -1,5 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import { NavigationContext, navigate } from 'lwr/navigation';
+import { getAuthContext } from 'orion/authContextProvider';
 
 const navLinks = {
     left: [
@@ -33,6 +34,14 @@ const navLinks = {
 export default class NavBar extends LightningElement {
     @wire(NavigationContext)
     navContext;
+
+    @wire(getAuthContext)
+    ctxUser({ data }) {
+        if (data?.value) {
+            console.log('Navbar has updated user context');
+            console.log(data.value);
+        }
+    }
 
     get leftNavLinks() {
         return navLinks.left || [];

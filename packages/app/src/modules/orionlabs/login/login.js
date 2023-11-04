@@ -1,6 +1,7 @@
 import { LightningElement, track, wire } from 'lwc';
-import { NavigationContext } from 'lwr/navigation';
+import { NavigationContext, navigate } from 'lwr/navigation';
 import { login } from 'orionlabs/authApi';
+import eventEmitter from 'orion/eventEmitter';
 
 export default class Login extends LightningElement {
     @track error;
@@ -16,7 +17,10 @@ export default class Login extends LightningElement {
             try {
                 const _response = await login({ email, password });
                 this.error = '';
+                eventEmitter.emit('user-login', _response.data);
+                this.navigateToHome();
             } catch (err) {
+                console.error(err);
                 this.error = 'Login credentials invalid. Please try again.';
                 this.refs.email.focus();
             }
@@ -25,5 +29,11 @@ export default class Login extends LightningElement {
 
     get hasError() {
         return this.error?.length > 0;
+    }
+
+    navigateToHome() {
+        if (this.navContext) {
+            navigate(this.navContext, { type: 'home' });
+        }
     }
 }
