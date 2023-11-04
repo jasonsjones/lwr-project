@@ -19,7 +19,8 @@
                         page-reference={link.pageReference}
                     ></orionlabs-nav-link>
                 </template>
-                <template for:each={rightNavLinks} for:item="link">
+                <div lwc:if={hasUser} class="text-lg">{userDisplayName}</div>
+                <template lwc:else for:each={rightNavLinks} for:item="link">
                     <orionlabs-nav-link
                         key={link.id}
                         label={link.label}

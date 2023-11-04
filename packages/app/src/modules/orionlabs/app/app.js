@@ -1,6 +1,7 @@
 import { createRouter } from 'lwr/router';
 import AuthContextProvider from 'orion/authContextProvider';
 import eventEmitter from 'orion/eventEmitter';
+import { EVENTS } from 'orionlabs/common';
 
 const routes = [
     {
@@ -37,7 +38,7 @@ export default class App extends AuthContextProvider {
     }
 
     connectedCallback() {
-        eventEmitter.subscribe('user-login', (data) => {
+        eventEmitter.subscribe(EVENTS.USER_LOGIN, (data) => {
             const { accessToken, user } = data;
             this.updateContext({
                 value: {
