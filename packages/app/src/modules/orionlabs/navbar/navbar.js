@@ -32,14 +32,26 @@ const navLinks = {
 };
 
 export default class NavBar extends LightningElement {
+    user;
+
     @wire(NavigationContext)
     navContext;
 
     @wire(getAuthContext)
     ctxUser({ data }) {
         if (data?.value) {
-            console.log('Navbar has updated user context');
-            console.log(data.value);
+            this.user = data?.value?.user;
+        }
+    }
+
+    get hasUser() {
+        return !!this.user;
+    }
+
+    get userDisplayName() {
+        if (this.user) {
+            const { firstName, lastName } = this.user;
+            return `${firstName} ${lastName}`;
         }
     }
 

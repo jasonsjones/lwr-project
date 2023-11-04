@@ -1,6 +1,7 @@
 import { LightningElement, track, wire } from 'lwc';
 import { NavigationContext, navigate } from 'lwr/navigation';
 import { login } from 'orionlabs/authApi';
+import { EVENTS } from 'orionlabs/common';
 import eventEmitter from 'orion/eventEmitter';
 
 export default class Login extends LightningElement {
@@ -17,7 +18,7 @@ export default class Login extends LightningElement {
             try {
                 const _response = await login({ email, password });
                 this.error = '';
-                eventEmitter.emit('user-login', _response.data);
+                eventEmitter.emit(EVENTS.USER_LOGIN, _response.data);
                 this.navigateToHome();
             } catch (err) {
                 console.error(err);
