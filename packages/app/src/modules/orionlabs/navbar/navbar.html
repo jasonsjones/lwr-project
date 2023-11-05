@@ -19,7 +19,15 @@
                         page-reference={link.pageReference}
                     ></orionlabs-nav-link>
                 </template>
-                <div lwc:if={hasUser} class="text-lg">{userDisplayName}</div>
+                <div lwc:if={hasUser} class="flex items-center gap-8">
+                    <div class="text-lg">{userDisplayName}</div>
+                    <button
+                        class="p-2 px-3 rounded-lg bg-slate-800 text-lg hover:text-white"
+                        onclick={handleLogout}
+                    >
+                        Logout
+                    </button>
+                </div>
                 <template lwc:else for:each={rightNavLinks} for:item="link">
                     <orionlabs-nav-link
                         key={link.id}
