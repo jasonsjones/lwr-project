@@ -1,6 +1,8 @@
 import { LightningElement, wire } from 'lwc';
 import { NavigationContext, navigate } from 'lwr/navigation';
 import { getAuthContext } from 'orion/authContextProvider';
+import eventEmitter from 'orion/eventEmitter';
+import { EVENTS } from 'orionlabs/common';
 
 const navLinks = {
     left: [
@@ -68,5 +70,9 @@ export default class NavBar extends LightningElement {
         if (this.navContext) {
             navigate(this.navContext, { type: 'home' });
         }
+    }
+
+    handleLogout() {
+        eventEmitter.emit(EVENTS.USER_LOGOUT);
     }
 }

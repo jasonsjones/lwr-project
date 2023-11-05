@@ -47,5 +47,14 @@ export default class App extends AuthContextProvider {
                 }
             });
         });
+
+        eventEmitter.subscribe(EVENTS.USER_LOGOUT, () => {
+            this.updateContext({
+                value: {
+                    accessToken: null,
+                    user: null
+                }
+            });
+        });
     }
 }
