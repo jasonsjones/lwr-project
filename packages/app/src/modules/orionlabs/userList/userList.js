@@ -1,6 +1,6 @@
 import { LightningElement, track, wire } from 'lwc';
 import { NavigationContext } from 'lwr/navigation';
-import { getUsers } from '@lwr-project/wires';
+import { getUsers } from 'orionlabs/userApi';
 
 export default class UserList extends LightningElement {
     @track _users;
