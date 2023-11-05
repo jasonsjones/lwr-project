@@ -1,1 +1,1 @@
-export { getUsers } from 'orion/adapters';
+export { getUsers } from '@lwr-project/wires';
