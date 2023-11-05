@@ -1,4 +1,4 @@
-import prisma from '../db/client.js';
+import prisma from '../../config/db/client.js';
 
 export async function getUsers() {
     return await prisma.user.findMany();

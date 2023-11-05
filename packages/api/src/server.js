@@ -3,10 +3,10 @@ import fastifyCookie from '@fastify/cookie';
 import fastifySession from '@fastify/session';
 import fastifyPassport from '@fastify/passport';
 import fastifyCors from '@fastify/cors';
-import LocalStrategy from './auth/strategies/local.js';
-import indexRoutes from './index/routes.js';
-import userRoutes from './user/routes.js';
-import authRoutes from './auth/routes.js';
+import LocalStrategy from './modules/auth/strategies/local.js';
+import indexRoutes from './modules/index/routes.js';
+import userRoutes from './modules/user/routes.js';
+import authRoutes from './modules/auth/routes.js';
 
 const BASE_URL_V1 = '/api/v1';
 
