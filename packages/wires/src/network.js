@@ -8,7 +8,7 @@ async function networkAdapter(resourceRequest) {
 
     const response = await fetch(path, {
         method: method.toUpperCase(),
-        // credentials: 'include',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },

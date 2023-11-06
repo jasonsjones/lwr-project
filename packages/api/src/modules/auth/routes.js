@@ -1,5 +1,7 @@
 import fastifyPassport from '@fastify/passport';
-import { generateAccessToken } from './service.js';
+import { generateAccessToken, generateRefreshToken } from './service.js';
+
+const REFRESH_TOKEN_KEY = 'r-token';
 
 async function authRoutes(app) {
     app.post(
@@ -39,6 +41,14 @@ async function authRoutes(app) {
             const user = req.user;
             if (user) {
                 const accessToken = generateAccessToken(user);
+                const refreshToken = generateRefreshToken(user);
+
+                reply.setCookie(REFRESH_TOKEN_KEY, refreshToken, {
+                    httpOnly: true,
+                    sameSite: 'none',
+                    secure: true
+                });
+
                 return {
                     accessToken,
                     user
