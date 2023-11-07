@@ -12,9 +12,14 @@ export function verifyPassword(user, password) {
 
 export function generateRefreshToken(user) {
     const payload = { sub: user.id, email: user.email };
-    return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: '14d' });
+    return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 }
+
 export function generateAccessToken(user) {
     const payload = { sub: user.id, email: user.email };
     return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: '10m' });
+}
+
+export function verifyRefreshToken(token) {
+    return jwt.verify(token, REFRESH_TOKEN_SECRET);
 }
