@@ -1,7 +1,8 @@
 import fastifyPassport from '@fastify/passport';
-import { generateAccessToken, generateRefreshToken } from './service.js';
-
-const REFRESH_TOKEN_KEY = 'r-token';
+import { verifyRefreshToken } from './service.js';
+import { getUserByEmail } from '../user/service.js';
+import { authUserTokens } from './controller.js';
+import { REFRESH_TOKEN_KEY } from './constants.js';
 
 async function authRoutes(app) {
     app.post(
@@ -37,29 +38,30 @@ async function authRoutes(app) {
                 }
             )
         },
-        async function handler(req, reply) {
-            const user = req.user;
-            if (user) {
-                const accessToken = generateAccessToken(user);
-                const refreshToken = generateRefreshToken(user);
+        authUserTokens
+    );
 
-                reply.setCookie(REFRESH_TOKEN_KEY, refreshToken, {
-                    httpOnly: true,
-                    sameSite: 'none',
-                    secure: true
-                });
+    app.get(
+        '/me',
+        {
+            preHandler: async function (req, reply, done) {
+                const refreshToken = req.cookies[REFRESH_TOKEN_KEY];
+                if (refreshToken) {
+                    try {
+                        const payload = verifyRefreshToken(refreshToken);
 
-                return {
-                    accessToken,
-                    user
-                };
+                        if (payload.email) {
+                            const user = await getUserByEmail(payload.email);
+                            if (user) req.user = user;
+                        }
+                    } catch (err) {
+                        console.log(err.message);
+                    }
+                }
+                done();
             }
-            reply.statusCode = 401;
-            return reply.send({
-                accessToken: null,
-                user: null
-            });
-        }
+        },
+        authUserTokens
     );
 }
 
