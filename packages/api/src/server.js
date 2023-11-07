@@ -11,7 +11,7 @@ import userRoutes from './modules/user/routes.js';
 import authRoutes from './modules/auth/routes.js';
 
 const BASE_URL_V1 = '/api/v1';
-const LOCAL_APP_URL = 'http:localhost:4200';
+const LOCAL_APP_URL = 'http://localhost:4200';
 
 const envToLogger = {
     development: {
