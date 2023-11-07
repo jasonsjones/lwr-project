@@ -50,6 +50,14 @@ types:
                     application/json:
                         type: UserList
 /auth:
+    /me:
+        get:
+            description: Get the context user
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: AuthResponse
     /login:
         post:
             description: Authenticate to application
