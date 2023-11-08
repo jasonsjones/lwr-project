@@ -1,0 +1,30 @@
+{
+    "root": true,
+    "selector": {
+        "css": ".app"
+    },
+    "elements": [
+        {
+            "name": "app",
+            "selector": {
+                "css": "orionlabs-app"
+            },
+            "public": true
+        },
+        {
+            "name": "routerContainer",
+            "selector": {
+                "css": "lwr-router-container"
+            },
+            "public": true
+        },
+        {
+            "name": "pageLayout",
+            "type": "lwr-project/pageLayout",
+            "selector": {
+                "css": "orionlabs-page-layout"
+            },
+            "public": true
+        }
+    ]
+}
