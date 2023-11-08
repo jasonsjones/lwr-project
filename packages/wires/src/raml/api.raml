@@ -75,3 +75,12 @@ types:
                             type: UnauthorizedResponse
                             example: |
                                 { "message": "Unauthorized" }
+
+    /logout:
+        post:
+            description: Logout context user
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: AuthResponse

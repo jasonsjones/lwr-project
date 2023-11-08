@@ -1,2 +1,2 @@
 export { getUsers } from './adapters/adapterUser';
-export { getContextUser, login } from './adapters/adapterAuth';
+export { getContextUser, login, logout } from './adapters/adapterAuth';
