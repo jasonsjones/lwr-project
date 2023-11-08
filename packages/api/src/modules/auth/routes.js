@@ -1,7 +1,7 @@
 import fastifyPassport from '@fastify/passport';
 import { verifyRefreshToken } from './service.js';
 import { getUserByEmail } from '../user/service.js';
-import { authUserTokens } from './controller.js';
+import { authUserLogout, authUserTokens } from './controller.js';
 import { REFRESH_TOKEN_KEY } from './constants.js';
 
 async function authRoutes(app) {
@@ -40,6 +40,8 @@ async function authRoutes(app) {
         },
         authUserTokens
     );
+
+    app.get('/logout', authUserLogout);
 
     app.get(
         '/me',
