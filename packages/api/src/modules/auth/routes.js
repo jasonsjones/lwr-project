@@ -44,7 +44,7 @@ async function authRoutes(app) {
     app.get(
         '/me',
         {
-            preHandler: async function (req, reply, done) {
+            preHandler: async function (req) {
                 const refreshToken = req.cookies[REFRESH_TOKEN_KEY];
                 if (refreshToken) {
                     try {
@@ -58,7 +58,6 @@ async function authRoutes(app) {
                         console.log(err.message);
                     }
                 }
-                done();
             }
         },
         authUserTokens
