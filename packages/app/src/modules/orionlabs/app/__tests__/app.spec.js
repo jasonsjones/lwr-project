@@ -1,6 +1,12 @@
 import { createElement } from 'lwc';
 import App from 'orionlabs/app';
 
+global.fetch = jest.fn(() =>
+    Promise.resolve({
+        json: () => jest.fn()
+    })
+);
+
 async function createComponent(prop = {}) {
     const element = createElement('orionlabs-app', {
         is: App

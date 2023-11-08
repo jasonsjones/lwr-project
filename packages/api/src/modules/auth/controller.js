@@ -10,7 +10,8 @@ export async function authUserTokens(req, reply) {
 
         reply.setCookie(REFRESH_TOKEN_KEY, refreshToken, {
             httpOnly: true,
-            sameSite: 'none'
+            sameSite: 'none',
+            secure: true
         });
 
         return {

@@ -3,6 +3,23 @@ import AuthContextProvider from 'orion/authContextProvider';
 import eventEmitter from 'orion/eventEmitter';
 import { EVENTS } from 'orionlabs/common';
 
+function fetchContextUser(clientHost) {
+    let apiBaseUrl;
+    // update api base url based on client host
+    // TODO: refactor out at a later time ;-)
+    switch (clientHost) {
+        case 'localhost:4200':
+            apiBaseUrl = 'http://localhost:3000';
+            break;
+        default:
+            break;
+    }
+
+    return fetch(`${apiBaseUrl}/api/v1/auth/me`, { credentials: 'include' }).then((res) =>
+        res.json()
+    );
+}
+
 const routes = [
     {
         id: 'home',
@@ -53,6 +70,19 @@ export default class App extends AuthContextProvider {
                 value: {
                     accessToken: null,
                     user: null
+                }
+            });
+        });
+
+        const host = window?.location?.host;
+        // one-time fetch of the context user, returns user if
+        // refresh token in cookie is valid
+        fetchContextUser(host).then((data) => {
+            const { accessToken, user } = data;
+            this.updateContext({
+                value: {
+                    accessToken,
+                    user
                 }
             });
         });
