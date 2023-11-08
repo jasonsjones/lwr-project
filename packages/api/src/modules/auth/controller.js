@@ -3,6 +3,7 @@ import { REFRESH_TOKEN_KEY } from './constants.js';
 
 export async function authUserTokens(req, reply) {
     const user = req.user;
+    const isFromPostman = req.headers['user-agent'].includes('Postman');
 
     if (user) {
         const accessToken = generateAccessToken(user);
@@ -11,7 +12,7 @@ export async function authUserTokens(req, reply) {
         reply.setCookie(REFRESH_TOKEN_KEY, refreshToken, {
             httpOnly: true,
             sameSite: 'none',
-            secure: true
+            secure: !isFromPostman
         });
 
         return {
@@ -21,6 +22,14 @@ export async function authUserTokens(req, reply) {
     }
 
     reply.statusCode = 401;
+    return reply.send({
+        accessToken: null,
+        user: null
+    });
+}
+
+export function authUserLogout(_req, reply) {
+    reply.clearCookie(REFRESH_TOKEN_KEY);
     return reply.send({
         accessToken: null,
         user: null
