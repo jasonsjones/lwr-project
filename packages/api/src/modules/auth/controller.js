@@ -29,7 +29,10 @@ export async function authUserTokens(req, reply) {
 }
 
 export function authUserLogout(_req, reply) {
-    reply.clearCookie(REFRESH_TOKEN_KEY);
+    reply.clearCookie(REFRESH_TOKEN_KEY, {
+        path: '/api/v1/auth'
+    });
+
     return reply.send({
         accessToken: null,
         user: null

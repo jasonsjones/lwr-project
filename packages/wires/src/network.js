@@ -5,14 +5,14 @@ const store = new InMemoryStore();
 async function networkAdapter(resourceRequest) {
     const { baseUri, basePath, body, method } = resourceRequest;
     const path = `${baseUri}${basePath}`;
+    const isBodyNull = body === null;
+    const headers = isBodyNull ? undefined : { 'Content-Type': 'application/json' };
 
     const response = await fetch(path, {
         method: method.toUpperCase(),
         credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: body === null ? null : JSON.stringify(body)
+        headers,
+        body: isBodyNull ? null : JSON.stringify(body)
     });
 
     const resBody = await response.json();

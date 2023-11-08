@@ -1,6 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 import { NavigationContext, navigate } from 'lwr/navigation';
 import { getAuthContext } from 'orion/authContextProvider';
+import { logout } from 'orionlabs/authApi';
 import eventEmitter from 'orion/eventEmitter';
 import { EVENTS } from 'orionlabs/common';
 
@@ -74,5 +75,6 @@ export default class NavBar extends LightningElement {
 
     handleLogout() {
         eventEmitter.emit(EVENTS.USER_LOGOUT);
+        logout({ logout: true /* just to make luvio happy */ });
     }
 }
