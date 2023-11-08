@@ -1,0 +1,6 @@
+{
+    "alias": {
+        "lwr-project/pageLayout": "./pageLayout.js"
+    },
+    "moduleTarget": "module"
+}

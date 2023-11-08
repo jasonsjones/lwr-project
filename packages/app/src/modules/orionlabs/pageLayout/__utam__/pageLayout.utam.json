@@ -1,0 +1,28 @@
+{
+    "shadow": {
+        "elements": [
+            {
+                "name": "layoutScope",
+                "selector": {
+                    "css": "div.flex"
+                },
+                "elements": [
+                    {
+                        "name": "navbar",
+                        "selector": {
+                            "css": "orionlabs-navbar"
+                        },
+                        "public": true
+                    },
+                    {
+                        "name": "footer",
+                        "selector": {
+                            "css": "orionlabs-footer"
+                        },
+                        "public": true
+                    }
+                ]
+            }
+        ]
+    }
+}
