@@ -41,7 +41,7 @@ async function authRoutes(app) {
         authUserTokens
     );
 
-    app.get('/logout', authUserLogout);
+    app.post('/logout', authUserLogout);
 
     app.get(
         '/me',
