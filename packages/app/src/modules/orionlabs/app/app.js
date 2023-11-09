@@ -45,6 +45,12 @@ const routes = [
 export default class App extends AuthContextProvider {
     router = createRouter({ routes });
 
+    accessToken;
+
+    get isAuthenticated() {
+        return !!this.accessToken;
+    }
+
     get usersPageRef() {
         return {
             type: 'namedPage',
@@ -54,9 +60,26 @@ export default class App extends AuthContextProvider {
         };
     }
 
+    preNavigate(event) {
+        const {
+            next: {
+                route: { pageReference }
+            }
+        } = event.detail;
+        const {
+            attributes: { pageName }
+        } = pageReference;
+
+        // don't navigate to login route if user is already authenticated
+        if (this.isAuthenticated && pageName === 'login') {
+            event.preventDefault();
+        }
+    }
+
     connectedCallback() {
         eventEmitter.subscribe(EVENTS.USER_LOGIN, (data) => {
             const { accessToken, user } = data;
+            this.accessToken = accessToken;
             this.updateContext({
                 value: {
                     accessToken,
@@ -66,6 +89,7 @@ export default class App extends AuthContextProvider {
         });
 
         eventEmitter.subscribe(EVENTS.USER_LOGOUT, () => {
+            this.accessToken = null;
             this.updateContext({
                 value: {
                     accessToken: null,
@@ -79,6 +103,7 @@ export default class App extends AuthContextProvider {
         // refresh token in cookie is valid
         fetchContextUser(host).then((data) => {
             const { accessToken, user } = data;
+            this.accessToken = accessToken;
             this.updateContext({
                 value: {
                     accessToken,
