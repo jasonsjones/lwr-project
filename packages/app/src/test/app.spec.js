@@ -23,4 +23,16 @@ describe('LWR Project App', () => {
         const layout = await appRoot.getPageLayout();
         expect(await layout.isPresent()).toBe(true);
     });
+
+    it('layout has a navbar', async () => {
+        const layout = await appRoot.getPageLayout();
+        const navbar = await layout.getNavbar();
+        expect(await navbar.isPresent()).toBe(true);
+    });
+
+    it('layout has a footer', async () => {
+        const layout = await appRoot.getPageLayout();
+        const footer = await layout.getFooter();
+        expect(await footer.isPresent()).toBe(true);
+    });
 });
