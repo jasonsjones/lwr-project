@@ -1,1 +1,1 @@
-export { getUsers } from '@lwr-project/wires';
+export { getUsers } from '@lwr-project/data-service';

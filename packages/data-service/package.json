@@ -1,5 +1,5 @@
 {
-    "name": "@lwr-project/wires",
+    "name": "@lwr-project/data-service",
     "version": "1.0.0",
     "main": "dist/index.js",
     "scripts": {
@@ -9,7 +9,7 @@
         "generate": "luvio generate src/raml/luvio.raml src/generated",
         "lint": "eslint '**/*.js' --max-warnings 0",
         "prepare": "yarn build",
-        "test": "echo 'wires tests not yet implemented'"
+        "test": "echo 'data-service tests not yet implemented'"
     },
     "dependencies": {
         "@luvio/engine": "0.152.2",
