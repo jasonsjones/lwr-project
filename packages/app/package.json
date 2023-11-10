@@ -21,7 +21,7 @@
         "watch:css": "yarn build:css --watch"
     },
     "dependencies": {
-        "@lwr-project/wires": "*",
+        "@lwr-project/data-service": "*",
         "lwc": "3.3.3",
         "lwr": "0.10.6"
     },

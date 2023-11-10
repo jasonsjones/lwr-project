@@ -11,7 +11,7 @@
         "dev:api": "yarn workspace @lwr-project/api run dev",
         "dev:app": "yarn workspace @lwr-project/app run dev",
         "lint": "yarn workspaces run lint",
-        "prepare": "yarn workspace @lwr-project/wires run build",
+        "prepare": "yarn workspace @lwr-project/data-service run build",
         "test": "yarn workspaces run test"
     },
     "devDependencies": {
