@@ -1,6 +1,6 @@
 import { createWireAdapterConstructor } from '@luvio/lwc-luvio';
 import { getUsersAdapterFactory } from '../generated/adapters/getUsers';
-import { luvio } from '../network';
+import { luvio } from '../transport/network';
 
 const getUsersLuvioAdapter = getUsersAdapterFactory(luvio);
 const GetUsersWireAdapter = createWireAdapterConstructor(getUsersLuvioAdapter, 'getUsers', luvio);
