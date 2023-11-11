@@ -1,17 +1,31 @@
 import { Environment, InMemoryStore, Luvio } from '@luvio/engine';
+import { getAccessToken } from '../store/tokenStore';
 
 const store = new InMemoryStore();
+
+function generateHeaders(body) {
+    const accesstToken = getAccessToken();
+
+    let headers = {};
+    if (body) {
+        headers['Content-Type'] = 'application/json';
+    }
+
+    if (accesstToken) {
+        headers['Authorization'] = `Bearer ${accesstToken}`;
+    }
+    return headers;
+}
 
 async function networkAdapter(resourceRequest) {
     const { baseUri, basePath, body, method } = resourceRequest;
     const path = `${baseUri}${basePath}`;
     const isBodyNull = body === null;
-    const headers = isBodyNull ? undefined : { 'Content-Type': 'application/json' };
 
     const response = await fetch(path, {
         method: method.toUpperCase(),
         credentials: 'include',
-        headers,
+        headers: generateHeaders(body),
         body: isBodyNull ? null : JSON.stringify(body)
     });
 

@@ -2,7 +2,7 @@ import { createWireAdapterConstructor } from '@luvio/lwc-luvio';
 import { getContextUserAdapterFactory } from '../generated/adapters/getContextUser';
 import { loginAdapterFactory } from '../generated/adapters/login';
 import { logoutAdapterFactory } from '../generated/adapters/logout';
-import { luvio } from '../network';
+import { luvio } from '../transport/network';
 
 const getContextUserLuvioAdapter = getContextUserAdapterFactory(luvio);
 const GetContextUserWireAdapter = createWireAdapterConstructor(
