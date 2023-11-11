@@ -2,6 +2,7 @@ import { createRouter } from 'lwr/router';
 import AuthContextProvider from 'orion/authContextProvider';
 import eventEmitter from 'orion/eventEmitter';
 import { EVENTS } from 'orionlabs/common';
+import { setAccessToken } from '@lwr-project/data-service';
 
 function fetchContextUser(clientHost) {
     let apiBaseUrl;
@@ -80,6 +81,7 @@ export default class App extends AuthContextProvider {
         eventEmitter.subscribe(EVENTS.USER_LOGIN, (data) => {
             const { accessToken, user } = data;
             this.accessToken = accessToken;
+            setAccessToken(accessToken);
             this.updateContext({
                 value: {
                     accessToken,
@@ -90,6 +92,7 @@ export default class App extends AuthContextProvider {
 
         eventEmitter.subscribe(EVENTS.USER_LOGOUT, () => {
             this.accessToken = null;
+            setAccessToken(undefined);
             this.updateContext({
                 value: {
                     accessToken: null,
@@ -104,6 +107,7 @@ export default class App extends AuthContextProvider {
         fetchContextUser(host).then((data) => {
             const { accessToken, user } = data;
             this.accessToken = accessToken;
+            setAccessToken(accessToken);
             this.updateContext({
                 value: {
                     accessToken,
