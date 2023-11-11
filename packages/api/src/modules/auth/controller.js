@@ -21,7 +21,11 @@ export async function authUserTokens(req, reply) {
         };
     }
 
-    reply.statusCode = 401;
+    // only send a 401 on failed logins
+    if (req.url.split('/').includes('login')) {
+        reply.statusCode = 401;
+    }
+
     return reply.send({
         accessToken: null,
         user: null
