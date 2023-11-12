@@ -4,10 +4,10 @@ import jwt from 'jsonwebtoken';
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 
 export function verifyPassword(user, password) {
-    if (!user?.password) {
+    if (!user?.authData) {
         return false;
     }
-    return bcrypt.compareSync(password, user.password.hash);
+    return bcrypt.compareSync(password, user.authData.passwordHash);
 }
 
 export function generateRefreshToken(user) {
