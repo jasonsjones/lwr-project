@@ -15,8 +15,9 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Password" (
-    "hash" TEXT NOT NULL,
+CREATE TABLE "UserAuthData" (
+    "passwordHash" TEXT NOT NULL,
+    "tokenVersion" INTEGER NOT NULL DEFAULT 0,
     "userId" TEXT NOT NULL
 );
 
@@ -24,7 +25,7 @@ CREATE TABLE "Password" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Password_userId_key" ON "Password"("userId");
+CREATE UNIQUE INDEX "UserAuthData_userId_key" ON "UserAuthData"("userId");
 
 -- AddForeignKey
-ALTER TABLE "Password" ADD CONSTRAINT "Password_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "UserAuthData" ADD CONSTRAINT "UserAuthData_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

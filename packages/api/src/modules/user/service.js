@@ -4,8 +4,8 @@ export async function getUsers() {
     return await prisma.user.findMany();
 }
 
-export async function getUserByEmailIncludePassword(email) {
-    return await prisma.user.findUnique({ where: { email }, include: { password: true } });
+export async function getUserByEmailIncludeAuthData(email) {
+    return await prisma.user.findUnique({ where: { email }, include: { authData: true } });
 }
 
 export async function getUserByEmail(email) {

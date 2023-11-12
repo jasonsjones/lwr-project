@@ -30,9 +30,9 @@ async function seed() {
             update: {},
             create: {
                 ...u,
-                password: {
+                authData: {
                     create: {
-                        hash: hashedPassword
+                        passwordHash: hashedPassword
                     }
                 }
             }
