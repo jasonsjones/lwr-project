@@ -1,25 +1,5 @@
+import { LightningElement } from 'lwc';
 import { createRouter } from 'lwr/router';
-import AuthContextProvider from 'orion/authContextProvider';
-import eventEmitter from 'orion/eventEmitter';
-import { EVENTS } from 'orionlabs/common';
-import { setAccessToken } from '@lwr-project/data-service';
-
-function fetchContextUser(clientHost) {
-    let apiBaseUrl;
-    // update api base url based on client host
-    // TODO: refactor out at a later time ;-)
-    switch (clientHost) {
-        case 'localhost:4200':
-            apiBaseUrl = 'http://localhost:3000';
-            break;
-        default:
-            break;
-    }
-
-    return fetch(`${apiBaseUrl}/api/v1/auth/me`, { credentials: 'include' }).then((res) =>
-        res.json()
-    );
-}
 
 const routes = [
     {
@@ -43,10 +23,14 @@ const routes = [
     }
 ];
 
-export default class App extends AuthContextProvider {
+export default class App extends LightningElement {
     router = createRouter({ routes });
 
     accessToken;
+
+    handleAuthUpdate(event) {
+        this.accessToken = event?.detail?.accessToken;
+    }
 
     get isAuthenticated() {
         return !!this.accessToken;
@@ -75,45 +59,5 @@ export default class App extends AuthContextProvider {
         if (this.isAuthenticated && pageName === 'login') {
             event.preventDefault();
         }
-    }
-
-    connectedCallback() {
-        eventEmitter.subscribe(EVENTS.USER_LOGIN, (data) => {
-            const { accessToken, user } = data;
-            this.accessToken = accessToken;
-            setAccessToken(accessToken);
-            this.updateContext({
-                value: {
-                    accessToken,
-                    user
-                }
-            });
-        });
-
-        eventEmitter.subscribe(EVENTS.USER_LOGOUT, () => {
-            this.accessToken = null;
-            setAccessToken(undefined);
-            this.updateContext({
-                value: {
-                    accessToken: null,
-                    user: null
-                }
-            });
-        });
-
-        const host = window?.location?.host;
-        // one-time fetch of the context user, returns user if
-        // refresh token in cookie is valid
-        fetchContextUser(host).then((data) => {
-            const { accessToken, user } = data;
-            this.accessToken = accessToken;
-            setAccessToken(accessToken);
-            this.updateContext({
-                value: {
-                    accessToken,
-                    user
-                }
-            });
-        });
     }
 }
