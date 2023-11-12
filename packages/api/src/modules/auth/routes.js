@@ -54,7 +54,11 @@ async function authRoutes(app) {
 
                         if (payload.email) {
                             const user = await getUserByEmail(payload.email);
-                            if (user) req.user = user;
+                            if (user) {
+                                // TODO: verify user refresh token version
+                                // with payload version
+                                req.user = user;
+                            }
                         }
                     } catch (err) {
                         console.log(err.message);

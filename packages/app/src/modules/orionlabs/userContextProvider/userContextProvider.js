@@ -1,7 +1,7 @@
 import AuthContextProvider from 'orion/authContextProvider';
 import eventEmitter from 'orion/eventEmitter';
 import { EVENTS } from 'orionlabs/common';
-import { setAccessToken } from '@lwr-project/data-service';
+import { setTokenInfo } from '@lwr-project/data-service';
 
 function fetchContextUser(clientHost) {
     let apiBaseUrl;
@@ -21,6 +21,9 @@ function fetchContextUser(clientHost) {
 }
 
 export default class UserContextProvider extends AuthContextProvider {
+    timeOfToken;
+    refreshIntervalId;
+
     dispatchAuthUpdate(accessToken) {
         this.dispatchEvent(new CustomEvent(EVENTS.AUTH_UPDATE, { detail: { accessToken } }));
     }
@@ -28,7 +31,8 @@ export default class UserContextProvider extends AuthContextProvider {
     setupEvents() {
         eventEmitter.subscribe(EVENTS.USER_LOGIN, (data) => {
             const { accessToken, user } = data;
-            setAccessToken(accessToken);
+            this.timeOfToken = Date.now();
+            setTokenInfo({ accessToken, timeOfToken: this.timeOfToken });
             this.updateContext({
                 value: {
                     accessToken,
@@ -39,7 +43,8 @@ export default class UserContextProvider extends AuthContextProvider {
         });
 
         eventEmitter.subscribe(EVENTS.USER_LOGOUT, () => {
-            setAccessToken(undefined);
+            this.timeOfToken = null;
+            setTokenInfo({ accessToken: null, timeOfToken: this.timeOfToken });
             this.updateContext({
                 value: {
                     accessToken: null,
@@ -50,13 +55,14 @@ export default class UserContextProvider extends AuthContextProvider {
         });
     }
 
-    fetchContextUserOnPageLoad() {
+    refreshContextUser() {
         const host = window?.location?.host;
         // one-time fetch of the context user, returns user if
         // refresh token in cookie is valid
         fetchContextUser(host).then((data) => {
             const { accessToken, user } = data;
-            setAccessToken(accessToken);
+            this.timeOfToken = accessToken ? Date.now() : null;
+            setTokenInfo({ accessToken, timeOfToken: this.timeOfToken });
             this.updateContext({
                 value: {
                     accessToken,
@@ -75,6 +81,22 @@ export default class UserContextProvider extends AuthContextProvider {
 
     connectedCallback() {
         this.setupEvents();
-        this.fetchContextUserOnPageLoad();
+        this.refreshContextUser();
+
+        // refresh every 2 minutes
+        this.refreshIntervalId = setInterval(
+            () => {
+                const timeElapsedInSec = (Date.now() - this.timeOfToken) / 1000;
+                // when over 8 minutes, make a call to refresh the ctx user
+                if (timeElapsedInSec > 60 * 8) {
+                    this.refreshContextUser();
+                }
+            },
+            1000 * 60 * 2
+        );
+    }
+
+    disconnectedCallback() {
+        clearInterval(this.refreshIntervalId);
     }
 }

@@ -1,18 +1,18 @@
 import { Environment, InMemoryStore, Luvio } from '@luvio/engine';
-import { getAccessToken } from '../store/tokenStore';
+import { getTokenInfo } from '../store/tokenStore';
 
 const store = new InMemoryStore();
 
 function generateHeaders(body) {
-    const accesstToken = getAccessToken();
+    const { accessToken } = getTokenInfo();
 
     let headers = {};
     if (body) {
         headers['Content-Type'] = 'application/json';
     }
 
-    if (accesstToken) {
-        headers['Authorization'] = `Bearer ${accesstToken}`;
+    if (accessToken) {
+        headers['Authorization'] = `Bearer ${accessToken}`;
     }
     return headers;
 }
