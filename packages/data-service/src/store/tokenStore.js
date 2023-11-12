@@ -1,9 +1,9 @@
-let accessToken;
+let tokenInfo;
 
-export function setAccessToken(token) {
-    accessToken = token;
+export function setTokenInfo(info) {
+    tokenInfo = info;
 }
 
-export function getAccessToken() {
-    return accessToken;
+export function getTokenInfo() {
+    return tokenInfo;
 }

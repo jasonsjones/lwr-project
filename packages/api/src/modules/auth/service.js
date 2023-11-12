@@ -11,6 +11,7 @@ export function verifyPassword(user, password) {
 }
 
 export function generateRefreshToken(user) {
+    // TODO: add refresh token version number to verify on new request
     const payload = { sub: user.id, email: user.email };
     return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 }
