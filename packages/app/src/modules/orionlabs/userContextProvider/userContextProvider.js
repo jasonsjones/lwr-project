@@ -86,10 +86,12 @@ export default class UserContextProvider extends AuthContextProvider {
         // refresh every 2 minutes
         this.refreshIntervalId = setInterval(
             () => {
-                const timeElapsedInSec = (Date.now() - this.timeOfToken) / 1000;
-                // when over 8 minutes, make a call to refresh the ctx user
-                if (timeElapsedInSec > 60 * 8) {
-                    this.refreshContextUser();
+                if (this.timeOfToken) {
+                    const timeElapsedInSec = (Date.now() - this.timeOfToken) / 1000;
+                    // when over 8 minutes, make a call to refresh the ctx user
+                    if (timeElapsedInSec > 60 * 8) {
+                        this.refreshContextUser();
+                    }
                 }
             },
             1000 * 60 * 2
