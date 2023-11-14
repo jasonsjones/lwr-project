@@ -6,6 +6,7 @@ import fastifyCors from '@fastify/cors';
 import fastifyEnv from '@fastify/env';
 import { envSchema } from './config/env.schema.js';
 import LocalStrategy from './modules/auth/strategies/local.js';
+import JwtStrategy from './modules/auth/strategies/jwt.js';
 import indexRoutes from './modules/index/routes.js';
 import userRoutes from './modules/user/routes.js';
 import authRoutes from './modules/auth/routes.js';
@@ -37,6 +38,7 @@ export async function buildServer() {
     app.register(fastifyPassport.initialize());
     app.register(fastifyPassport.secureSession());
     fastifyPassport.use('local', LocalStrategy);
+    fastifyPassport.use('jwt', JwtStrategy);
 
     app.register(indexRoutes);
     app.register(userRoutes, { prefix: `${BASE_URL_V1}/users` });
