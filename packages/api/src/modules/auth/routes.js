@@ -4,6 +4,11 @@ import { getUserByEmail } from '../user/service.js';
 import { authUserLogout, authUserTokens } from './controller.js';
 import { REFRESH_TOKEN_KEY } from './constants.js';
 
+/**
+ * Defines endpoints for the auth resource
+ *
+ * @param {import('fastify').FastifyInstance} app - the fastify instance
+ */
 async function authRoutes(app) {
     app.post(
         '/login',

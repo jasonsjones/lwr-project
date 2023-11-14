@@ -1,6 +1,11 @@
 import { buildServer } from './server.js';
 const port = process.env.PORT || 3000;
 
+/**
+ * Registers clean-up actions for app shutdown
+ *
+ * @param {import('fastify').FastifyInstance} fastify - the fastify app instance
+ */
 async function registerCleanUpActions(fastify) {
     ['SIGINT', 'SIGTERM'].forEach((signal) => {
         process.on(signal, async () => {

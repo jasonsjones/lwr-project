@@ -19,6 +19,11 @@ function authJwt() {
     );
 }
 
+/**
+ * Defines endpoints for the user resource
+ *
+ * @param {import('fastify').FastifyInstance} app - the fastify instance
+ */
 async function userRoutes(app) {
     app.get(
         '/',

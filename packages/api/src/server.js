@@ -23,6 +23,11 @@ const envToLogger = {
     test: false
 };
 
+/**
+ * Builds the fastify server
+ *
+ * @returns {import('fastify').FastifyInstance} the fastify app instance
+ */
 export async function buildServer() {
     const app = Fastify({
         logger: envToLogger[process.env.NODE_ENV] ?? true
