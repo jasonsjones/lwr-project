@@ -1,10 +1,9 @@
+import 'dotenv/config.js';
 import Fastify from 'fastify';
 import fastifyCookie from '@fastify/cookie';
 import fastifySession from '@fastify/session';
 import fastifyPassport from '@fastify/passport';
 import fastifyCors from '@fastify/cors';
-import fastifyEnv from '@fastify/env';
-import { envSchema } from './config/env.schema.js';
 import LocalStrategy from './modules/auth/strategies/local.js';
 import JwtStrategy from './modules/auth/strategies/jwt.js';
 import indexRoutes from './modules/index/routes.js';
@@ -33,7 +32,6 @@ export async function buildServer() {
         logger: envToLogger[process.env.NODE_ENV] ?? true
     });
 
-    app.register(fastifyEnv, { schema: envSchema, dotenv: true });
     app.register(fastifyCors, {
         origin: [LOCAL_APP_URL],
         credentials: true
