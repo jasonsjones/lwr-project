@@ -7,7 +7,7 @@ exports[`About component matches snapshot 1`] = `
       class="w-1/2 mx-auto text-gray-700"
     >
       <h2
-        class="text-3xl text-center my-4"
+        class="text-3xl font-semibold text-center mt-8 mb-4"
       >
         About
       </h2>

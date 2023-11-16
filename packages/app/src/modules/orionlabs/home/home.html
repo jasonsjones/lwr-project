@@ -1,32 +1,57 @@
 <template>
-    <div class="w-1/2 mx-auto mt-4 text-gray-700">
+    <div class="w-1/2 mx-auto mt-8 mb-4 text-gray-700">
         <div class="flex flex-col items-center">
-            <h1 class="text-4xl">Lightning Web Runtime!</h1>
-            <img
-                class="rounded-2xl mt-6"
-                src="/public/assets/recipes-logo.png"
-                alt="logo"
-                width="240"
-                height="240"
-            />
-            <orionlabs-link
-                class="mt-4"
-                navigate-to={usersPageRef}
-                relationship="noopener noreferrer"
-            >
-                <div class="p-4 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-800">
-                    Checkout the users!
+            <h1 class="text-4xl font-bold">Lightning Web Runtime</h1>
+            <div class="mt-10 flex gap-20">
+                <div class="flex flex-col justify-between flex-none">
+                    <img
+                        class="rounded-2xl"
+                        src="/public/assets/einstein.png"
+                        alt="logo"
+                        width="250"
+                        height="250"
+                    />
+                    <div class="mt-4">
+                        <orionlabs-link
+                            lwc:if={hasUser}
+                            navigate-to={usersPageRef}
+                            relationship="noopener noreferrer"
+                        >
+                            <div
+                                class="p-4 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-800 text-center"
+                            >
+                                Checkout the users!
+                            </div>
+                        </orionlabs-link>
+                        <orionlabs-link
+                            lwc:else
+                            navigate-to={loginPageRef}
+                            relationship="noopener noreferrer"
+                        >
+                            <div
+                                class="p-4 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-800 text-center"
+                            >
+                                Login to checkout the users!
+                            </div>
+                        </orionlabs-link>
+                    </div>
                 </div>
-            </orionlabs-link>
+                <div class="flex flex-col flex-initial">
+                    <h2 class="text-3xl font-semibold text-center text-gray-700 my-4">Home</h2>
+                    <p lwc:if={hasUser} class="mb-2 text-xl">Hello, {userDisplayName}!!</p>
+                    <p class="mb-2 text-xl">
+                        Fusce commodo aliquam arcu. Quisque rutrum. Nulla porta dolor. Etiam
+                        rhoncus. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet
+                        feugiat, pede. Suspendisse eu ligula. Proin pretium, leo ac pellentesque
+                        mollis, felis nunc ultrices eros, sed gravida augue augue mollis justo.
+                    </p>
+                    <p class="mb-2 text-xl">
+                        Etiam ut purus mattis mauris sodales aliquam. Pellentesque auctor neque nec urna. 
+                        Phasellus viverra nulla ut metus varius laoreet.
+                    </p>
+                    </p>
+                </div>
+            </div>
         </div>
-        <h2 class="text-3xl text-center text-gray-700 my-4">Home</h2>
-        <p lwc:if={hasUser} class="mb-2 text-xl">Hello, {userDisplayName}!!</p>
-        <p class="mb-2 text-xl">
-            Fusce commodo aliquam arcu. Quisque rutrum. Nulla porta dolor. Etiam rhoncus. Nullam
-            nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Suspendisse eu
-            ligula. Proin pretium, leo ac pellentesque mollis, felis nunc ultrices eros, sed gravida
-            augue augue mollis justo. Donec mi odio, faucibus at, scelerisque quis, convallis in,
-            nisi.
-        </p>
     </div>
 </template>
