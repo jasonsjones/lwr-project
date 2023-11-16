@@ -30,4 +30,13 @@ export default class Home extends LightningElement {
             }
         };
     }
+
+    get loginPageRef() {
+        return {
+            type: 'namedPage',
+            attributes: {
+                pageName: 'login'
+            }
+        };
+    }
 }

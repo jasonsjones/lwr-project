@@ -37,4 +37,8 @@ export default class Login extends LightningElement {
             navigate(this.navContext, { type: 'home' });
         }
     }
+
+    renderedCallback() {
+        this.refs.email.focus();
+    }
 }
