@@ -1,10 +1,12 @@
 import { LightningElement, track, wire } from 'lwc';
 import { CurrentPageReference, NavigationContext } from 'lwr/navigation';
+import { getAuthContext } from 'orion/authContextProvider';
 import { getUsers } from 'orionlabs/userApi';
 
 export default class UserList extends LightningElement {
     @track _users;
-    isLoading;
+    _authUser;
+    _isLoading;
 
     @wire(NavigationContext)
     navContext;
@@ -12,9 +14,17 @@ export default class UserList extends LightningElement {
     @wire(CurrentPageReference)
     currentPageRef;
 
+    @wire(getAuthContext)
+    ctxUser({ data }) {
+        if (data?.value) {
+            this._authUser = data?.value?.user;
+        }
+    }
+
     @wire(getUsers)
     getAllUsers({ data, error }) {
-        this.isLoading = !data && !error;
+        this._isLoading = null;
+        setTimeout(() => (this._isLoading = !data && !error), 500);
 
         if (error) {
             if (error.status == 401) {
@@ -30,12 +40,16 @@ export default class UserList extends LightningElement {
         }
     }
 
-    get noUsers() {
-        return !this.isLoading && (this._users || []).length === 0;
+    get isAuthenticated() {
+        return !!this._authUser;
     }
 
-    get hasUsers() {
-        return !this.noUsers;
+    get isNotAuthenticated() {
+        return !this.isAuthenticated;
+    }
+
+    get isLoading() {
+        return this._isLoading ?? true;
     }
 
     get users() {
