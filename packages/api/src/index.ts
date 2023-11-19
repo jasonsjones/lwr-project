@@ -1,6 +1,6 @@
-import 'dotenv/config.js';
+import 'dotenv/config';
 import { FastifyInstance } from 'fastify';
-import { buildServer } from './server.js';
+import { buildServer } from './server';
 
 const port = parseInt(process.env.PORT) || 3000;
 
