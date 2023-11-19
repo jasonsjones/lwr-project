@@ -1,12 +1,12 @@
 {
     "name": "@lwr-project/api",
     "version": "1.0.0",
-    "main": "src/index.js",
-    "type": "module",
+    "main": "dist/index.js",
     "license": "MIT",
     "scripts": {
-        "dev": "NODE_ENV=development nodemon src/index.js",
-        "lint": "eslint '**/*.{js,mjs}' --max-warnings 0",
+        "build": "tsc --build",
+        "dev": "NODE_ENV=development ts-node src/index",
+        "lint": "eslint '**/*.{js,ts}' --max-warnings 0",
         "test": "vitest --run"
     },
     "dependencies": {

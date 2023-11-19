@@ -1,13 +1,13 @@
 import 'dotenv/config.js';
+import { FastifyInstance } from 'fastify';
 import { buildServer } from './server.js';
-const port = process.env.PORT || 3000;
+
+const port = parseInt(process.env.PORT) || 3000;
 
 /**
  * Registers clean-up actions for app shutdown
- *
- * @param {import('fastify').FastifyInstance} fastify - the fastify app instance
  */
-async function registerCleanUpActions(fastify) {
+async function registerCleanUpActions(fastify: FastifyInstance): Promise<void> {
     ['SIGINT', 'SIGTERM'].forEach((signal) => {
         process.on(signal, async () => {
             await fastify.close();
@@ -16,8 +16,8 @@ async function registerCleanUpActions(fastify) {
     });
 }
 
-async function main() {
-    const fastify = await buildServer();
+async function main(): Promise<void> {
+    const fastify: FastifyInstance = await buildServer();
     await registerCleanUpActions(fastify);
 
     try {
