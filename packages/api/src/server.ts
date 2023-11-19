@@ -1,14 +1,14 @@
 import 'dotenv/config.js';
-import Fastify from 'fastify';
+import Fastify, { FastifyInstance } from 'fastify';
 import fastifyCookie from '@fastify/cookie';
 import fastifySession from '@fastify/session';
 import fastifyPassport from '@fastify/passport';
 import fastifyCors from '@fastify/cors';
-import LocalStrategy from './modules/auth/strategies/local.js';
-import JwtStrategy from './modules/auth/strategies/jwt.js';
-import indexRoutes from './modules/index/routes.js';
-import userRoutes from './modules/user/routes.js';
-import authRoutes from './modules/auth/routes.js';
+import LocalStrategy from './modules/auth/strategies/local';
+import JwtStrategy from './modules/auth/strategies/jwt';
+import indexRoutes from './modules/index/routes';
+import userRoutes from './modules/user/routes';
+import authRoutes from './modules/auth/routes';
 
 const BASE_URL_V1 = '/api/v1';
 const LOCAL_APP_URL = 'http://localhost:4200';
@@ -24,10 +24,8 @@ const envToLogger = {
 
 /**
  * Builds the fastify server
- *
- * @returns {import('fastify').FastifyInstance} the fastify app instance
  */
-export async function buildServer() {
+export async function buildServer(): Promise<FastifyInstance> {
     const app = Fastify({
         logger: envToLogger[process.env.NODE_ENV] ?? true
     });
