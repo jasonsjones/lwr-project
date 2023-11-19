@@ -14,8 +14,7 @@ async function verifyFn(email, password, done) {
     }
 
     if (user.authData && verifyPassword(user, password)) {
-        // eslint-disable-next-line no-unused-vars
-        const { authData, ...sanitizedUserInfo } = user;
+        const { _authData, ...sanitizedUserInfo } = user;
         return done(null, sanitizedUserInfo);
     }
     return done(null, false, { message: 'Invalid email or password' });
