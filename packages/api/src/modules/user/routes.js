@@ -1,5 +1,6 @@
 import fastifyPassport from '@fastify/passport';
-import { getUsers } from './service.js';
+import { createUser, getUsers } from './service.js';
+import { createUserSchema } from './schema.js';
 
 function authJwt() {
     return fastifyPassport.authenticate(
@@ -38,6 +39,18 @@ async function userRoutes(app) {
 
             reply.statusCode = 401;
             return { users: null };
+        }
+    );
+
+    app.post(
+        '/',
+        {
+            schema: createUserSchema
+        },
+        async function handler(req, reply) {
+            const user = await createUser(req.body);
+            reply.statusCode = 201;
+            return { user };
         }
     );
 }
