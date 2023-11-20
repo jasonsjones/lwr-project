@@ -22,7 +22,18 @@ const navLinks = {
     right: [
         {
             id: '0',
-            label: 'Login',
+            label: 'Sign Up',
+            pageReference: {
+                type: 'namedPage',
+                attributes: {
+                    pageName: 'signup'
+                },
+                state: {}
+            }
+        },
+        {
+            id: '1',
+            label: 'Log In',
             pageReference: {
                 type: 'namedPage',
                 attributes: {
