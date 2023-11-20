@@ -1,0 +1,57 @@
+<template>
+    <div class="w-2/3 mx-auto flex flex-col items-center">
+        <h1 class="text-3xl font-bold text-slate-700 mt-8 mb-4">Sign Up For Account</h1>
+        <div class="md:w-1/2 mt-4">
+            <form class="border-2 border-slate-300 rounded-md p-8">
+                <div class="mt-8">
+                    <orion-input
+                        lwc:ref="firstName"
+                        type="text"
+                        label="First Name"
+                        input-id="firstName"
+                    ></orion-input>
+                </div>
+                <div class="mt-8">
+                    <orion-input
+                        lwc:ref="lastName"
+                        type="text"
+                        label="Last Name"
+                        input-id="lastName"
+                    ></orion-input>
+                </div>
+                <div class="mt-8">
+                    <orion-input
+                        lwc:ref="email"
+                        type="email"
+                        label="Email"
+                        input-id="email"
+                    ></orion-input>
+                </div>
+                <div class="mt-8">
+                    <orion-input
+                        lwc:ref="password"
+                        type="password"
+                        label="Password"
+                        input-id="password"
+                    ></orion-input>
+                </div>
+                <div class="mt-8">
+                    <orion-input
+                        lwc:ref="confirmPassword"
+                        type="password"
+                        label="Confirm Password"
+                        input-id="confirmPassword"
+                    ></orion-input>
+                </div>
+                <div class="flex justify-end gap-x-4">
+                    <button
+                        type="submit"
+                        class="mt-8 grow py-3 bg-primary-700 text-gray-200 rounded-md hover:bg-primary-900"
+                    >
+                        Sign Up
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div></template
+>

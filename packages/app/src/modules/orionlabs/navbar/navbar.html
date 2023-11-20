@@ -12,29 +12,35 @@
                 </div>
             </a>
             <div class="flex grow items-center justify-between">
-                <template for:each={leftNavLinks} for:item="link">
-                    <orionlabs-nav-link
-                        key={link.id}
-                        label={link.label}
-                        page-reference={link.pageReference}
-                    ></orionlabs-nav-link>
-                </template>
-                <div lwc:if={hasUser} class="flex items-center gap-8">
-                    <div class="text-lg">{userDisplayName}</div>
-                    <button
-                        class="p-2 px-3 rounded-lg bg-slate-800 text-lg hover:text-white"
-                        onclick={handleLogout}
-                    >
-                        Logout
-                    </button>
+                <!-- left side links -->
+                <div class="flex gap-8">
+                    <template for:each={leftNavLinks} for:item="link">
+                        <orionlabs-nav-link
+                            key={link.id}
+                            label={link.label}
+                            page-reference={link.pageReference}
+                        ></orionlabs-nav-link>
+                    </template>
                 </div>
-                <template lwc:else for:each={rightNavLinks} for:item="link">
-                    <orionlabs-nav-link
-                        key={link.id}
-                        label={link.label}
-                        page-reference={link.pageReference}
-                    ></orionlabs-nav-link>
-                </template>
+                <!-- right side links -->
+                <div class="flex gap-8">
+                    <div lwc:if={hasUser} class="flex items-center gap-8">
+                        <div class="text-lg">{userDisplayName}</div>
+                        <button
+                            class="p-2 px-3 rounded-lg bg-slate-800 text-lg hover:text-white"
+                            onclick={handleLogout}
+                        >
+                            Logout
+                        </button>
+                    </div>
+                    <template lwc:else for:each={rightNavLinks} for:item="link">
+                        <orionlabs-nav-link
+                            key={link.id}
+                            label={link.label}
+                            page-reference={link.pageReference}
+                        ></orionlabs-nav-link>
+                    </template>
+                </div>
             </div>
         </nav>
     </header>
