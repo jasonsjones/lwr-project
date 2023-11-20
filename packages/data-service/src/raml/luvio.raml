@@ -12,6 +12,9 @@ types:
         (luvio.key):
             accessToken: accessToken
 
+    UserCreateResponse:
+        (luvio.key):
+            id: user.id
     User:
         (luvio.key):
             id: id
@@ -35,3 +38,6 @@ types:
     get:
         (luvio.adapter):
             name: getUsers
+    post:
+        (luvio.adapter):
+            name: createUser
