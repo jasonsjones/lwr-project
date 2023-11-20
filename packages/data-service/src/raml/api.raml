@@ -36,10 +36,32 @@ types:
             createdAt: string
             updatedAt: string
 
+    UserCreateResponse:
+        type: object
+        properties:
+            user:
+                type: User
+
     UserList:
         type: object
         properties:
             users: User[]
+
+    UserInput:
+        type: object
+        properties:
+            firstName:
+                type: string
+                required: true
+            lastName:
+                type: string
+                required: true
+            email:
+                type: string
+                required: true
+            password:
+                type: string
+                required: true
 
 /users:
     get:
@@ -49,6 +71,16 @@ types:
                 body:
                     application/json:
                         type: UserList
+    post:
+        description: Create a user
+        body:
+            application/json:
+                type: UserInput
+        responses:
+            201:
+                body:
+                    application/json:
+                        type: UserCreateResponse 
 /auth:
     /me:
         get:
