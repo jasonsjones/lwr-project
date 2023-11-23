@@ -30,22 +30,38 @@ exports[`NavBar component renders 1`] = `
         <div
           class="flex grow items-center justify-between"
         >
-          <orionlabs-nav-link>
-            #shadow-root(open)
-              <a
-                class="text-xl pb-1 hover:text-white"
-              >
-                About
-              </a>
-          </orionlabs-nav-link>
-          <orionlabs-nav-link>
-            #shadow-root(open)
-              <a
-                class="text-xl pb-1 hover:text-white"
-              >
-                Login
-              </a>
-          </orionlabs-nav-link>
+          <div
+            class="flex gap-8"
+          >
+            <orionlabs-nav-link>
+              #shadow-root(open)
+                <a
+                  class="text-xl pb-1 hover:text-white"
+                >
+                  About
+                </a>
+            </orionlabs-nav-link>
+          </div>
+          <div
+            class="flex gap-8"
+          >
+            <orionlabs-nav-link>
+              #shadow-root(open)
+                <a
+                  class="text-xl pb-1 hover:text-white"
+                >
+                  Sign Up
+                </a>
+            </orionlabs-nav-link>
+            <orionlabs-nav-link>
+              #shadow-root(open)
+                <a
+                  class="text-xl pb-1 hover:text-white"
+                >
+                  Log In
+                </a>
+            </orionlabs-nav-link>
+          </div>
         </div>
       </nav>
     </header>
