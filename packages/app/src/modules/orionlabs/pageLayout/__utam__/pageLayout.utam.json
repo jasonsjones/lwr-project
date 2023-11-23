@@ -9,6 +9,7 @@
                 "elements": [
                     {
                         "name": "navbar",
+                        "type": "lwr-project/navbar",
                         "selector": {
                             "css": "orionlabs-navbar"
                         },

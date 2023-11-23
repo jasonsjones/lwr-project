@@ -1,0 +1,52 @@
+{
+    "shadow": {
+        "elements": [
+            {
+                "name": "navScope",
+                "selector": {
+                    "css": "header nav "
+                },
+                "elements": [
+                    {
+                        "name": "homeLink",
+                        "type": "clickable",
+                        "selector": {
+                            "css": "a[href='/']"
+                        },
+                        "public": true
+                    },
+                    {
+                        "name": "allNavLinks",
+                        "type": "lwr-project/navLink",
+                        "public": true,
+                        "selector": {
+                            "css": "orionlabs-nav-link",
+                            "returnAll": true
+                        }
+                    },
+                    {
+                        "name": "navLinkByText",
+                        "type": "lwr-project/navLink",
+                        "public": true,
+                        "selector": {
+                            "css": "orionlabs-nav-link",
+                            "returnAll": true
+                        },
+                        "filter": {
+                            "apply": "getLink",
+                            "matcher": {
+                                "type": "stringEquals",
+                                "args": [
+                                    {
+                                        "name": "linkName",
+                                        "type": "string"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,6 +1,8 @@
 {
     "alias": {
-        "lwr-project/pageLayout": "./pageLayout.js"
+        "lwr-project/pageLayout": "./pageLayout.js",
+        "lwr-project/navbar": "./navbar.js",
+        "lwr-project/navLink": "./navLink.js"
     },
     "moduleTarget": "module"
 }
