@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import LocalStrategy from 'passport-local';
 import { getUserByEmailIncludeAuthData } from '../../user/service.js';
 import { verifyPassword } from '../service.js';
@@ -14,7 +16,8 @@ async function verifyFn(email, password, done) {
     }
 
     if (user.authData && verifyPassword(user, password)) {
-        const { _authData, ...sanitizedUserInfo } = user;
+        // eslint-disable-next-line no-unused-vars
+        const { authData, ...sanitizedUserInfo } = user;
         return done(null, sanitizedUserInfo);
     }
     return done(null, false, { message: 'Invalid email or password' });
