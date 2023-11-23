@@ -7,17 +7,19 @@
     "scripts": {
         "build": "yarn build:css && yarn build:utam",
         "build:css": "tailwindcss -i src/styles/styles.css -o src/assets/styles/tailwind.css",
-        "build:utam": "utam -c utam.config.json",
+        "build:utam": "yarn clean:utam && utam -c utam.config.json",
         "clean": "rm -rf __lwr_cache__ pageObjects",
         "clean:all": "yarn clean && rm -rf node_modules",
+        "clean:utam": "rm -rf pageObjects",
         "dev": "concurrently -n CSS,LWR -c magenta,cyan \"yarn watch:css\" \"yarn start:dev\"",
         "lint": "eslint '**/*.js' --max-warnings 0",
         "start": "lwr start --mode prod",
-        "start:dev": "lwr dev",
+        "start:dev": "lwr dev & echo $! > .pid",
         "start:compat": "lwr start --mode compat",
         "start:prod-compat": "lwr start --mode prod-compat",
         "test": "jest",
         "test:e2e": "wdio run wdio.conf.cjs",
+        "test:e2e:headless": "wdio run wdio.conf.headless.cjs",
         "watch:css": "yarn build:css --watch"
     },
     "dependencies": {

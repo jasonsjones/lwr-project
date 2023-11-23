@@ -1,0 +1,25 @@
+{
+    "methods": [
+        {
+            "name": "getLink",
+            "compose": [
+                {
+                    "element": "anchor",
+                    "apply": "getText"
+                }
+            ]
+        }
+    ],
+    "shadow": {
+        "elements": [
+            {
+                "name": "anchor",
+                "type": "clickable",
+                "selector": {
+                    "css": "a"
+                },
+                "public": true
+            }
+        ]
+    }
+}
