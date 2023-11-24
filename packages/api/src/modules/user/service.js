@@ -30,3 +30,7 @@ export async function getUserByEmailIncludeAuthData(email) {
 export async function getUserByEmail(email) {
     return await prisma.user.findUnique({ where: { email } });
 }
+
+export async function deleteUserById(id) {
+    return await prisma.user.delete({ where: { id } });
+}
