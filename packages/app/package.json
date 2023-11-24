@@ -14,7 +14,7 @@
         "dev": "concurrently -n CSS,LWR -c magenta,cyan \"yarn watch:css\" \"yarn start:dev\"",
         "lint": "eslint '**/*.js' --max-warnings 0",
         "start": "lwr start --mode prod",
-        "start:dev": "lwr dev & echo $! > .pid",
+        "start:dev": "lwr dev",
         "start:compat": "lwr start --mode compat",
         "start:prod-compat": "lwr start --mode prod-compat",
         "test": "jest",
