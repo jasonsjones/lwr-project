@@ -1,10 +1,20 @@
 import fastifyPassport from '@fastify/passport';
-import { createUser, getUsers } from './service.js';
+import { createUser, deleteUserById, getUsers } from './service.js';
 
 export async function createUserHandler(req, reply) {
     const user = await createUser(req.body);
     reply.statusCode = 201;
     return { user };
+}
+
+export async function deleteUserHandler(req) {
+    const { id } = req.params;
+    try {
+        const user = await deleteUserById(id);
+        return { user };
+    } catch (err) {
+        return { user: null };
+    }
 }
 
 export async function getUsersHandler(req, reply) {

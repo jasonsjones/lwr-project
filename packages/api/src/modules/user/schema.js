@@ -32,3 +32,14 @@ export const createUserSchema = {
         }
     }
 };
+
+export const deleteUserSchema = {
+    response: {
+        200: {
+            type: 'object',
+            properties: {
+                user: { $ref: 'userSchema#' }
+            }
+        }
+    }
+};
