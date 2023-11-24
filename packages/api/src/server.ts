@@ -22,6 +22,23 @@ const envToLogger = {
     test: false
 };
 
+function addCommonSchemas(app) {
+    app.addSchema({
+        $id: 'userSchema',
+        type: 'object',
+        nullable: true,
+        properties: {
+            id: { type: 'string' },
+            firstName: { type: 'string' },
+            lastName: { type: 'string' },
+            email: { type: 'string' },
+            roles: { type: 'array', items: { type: 'string' } },
+            createdAt: { typs: 'string' },
+            updatedAt: { typs: 'string' }
+        }
+    });
+}
+
 /**
  * Builds the fastify server
  */
@@ -40,6 +57,8 @@ export async function buildServer(): Promise<FastifyInstance> {
     app.register(fastifyPassport.secureSession());
     fastifyPassport.use('local', LocalStrategy);
     fastifyPassport.use('jwt', JwtStrategy);
+
+    addCommonSchemas(app);
 
     app.register(indexRoutes);
     app.register(userRoutes, { prefix: `${BASE_URL_V1}/users` });

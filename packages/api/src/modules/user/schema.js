@@ -1,13 +1,14 @@
-const userSchema = {
-    type: 'object',
-    properties: {
-        id: { type: 'string' },
-        firstName: { type: 'string' },
-        lastName: { type: 'string' },
-        email: { type: 'string' },
-        roles: { type: 'array', items: { type: 'string' } },
-        createdAt: { typs: 'string' },
-        updatedAt: { typs: 'string' }
+export const getUsersSchema = {
+    response: {
+        200: {
+            type: 'object',
+            properties: {
+                users: {
+                    type: 'array',
+                    items: { $ref: 'userSchema#' }
+                }
+            }
+        }
     }
 };
 
@@ -26,7 +27,7 @@ export const createUserSchema = {
         201: {
             type: 'object',
             properties: {
-                user: userSchema
+                user: { $ref: 'userSchema#' }
             }
         }
     }

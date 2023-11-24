@@ -1,24 +1,5 @@
-import fastifyPassport from '@fastify/passport';
-import { createUser, getUsers } from './service.js';
-import { createUserSchema } from './schema.js';
-
-function authJwt() {
-    return fastifyPassport.authenticate(
-        'jwt',
-        { session: false },
-        async (req, reply, err, user, info, _status) => {
-            if (err !== null) {
-                req.log.warn(err);
-            } else if (user) {
-                req.user = user;
-            }
-
-            if (info) {
-                req.log.warn(info.message);
-            }
-        }
-    );
-}
+import { authJwt, createUserHandler, getUsersHandler } from './controller.js';
+import { createUserSchema, getUsersSchema } from './schema.js';
 
 /**
  * Defines endpoints for the user resource
@@ -29,17 +10,10 @@ async function userRoutes(app) {
     app.get(
         '/',
         {
+            schema: getUsersSchema,
             preValidation: authJwt()
         },
-        async function handler(req, reply) {
-            if (req.user) {
-                const users = await getUsers();
-                return { users };
-            }
-
-            reply.statusCode = 401;
-            return { users: null };
-        }
+        getUsersHandler
     );
 
     app.post(
@@ -47,11 +21,7 @@ async function userRoutes(app) {
         {
             schema: createUserSchema
         },
-        async function handler(req, reply) {
-            const user = await createUser(req.body);
-            reply.statusCode = 201;
-            return { user };
-        }
+        createUserHandler
     );
 }
 
