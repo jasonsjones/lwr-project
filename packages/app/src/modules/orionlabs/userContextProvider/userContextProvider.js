@@ -1,24 +1,7 @@
 import AuthContextProvider from 'orion/authContextProvider';
 import eventEmitter from 'orion/eventEmitter';
 import { EVENTS } from 'orionlabs/common';
-import { setTokenInfo } from '@lwr-project/data-service';
-
-function fetchContextUser(clientHost) {
-    let apiBaseUrl;
-    // update api base url based on client host
-    // TODO: refactor out at a later time ;-)
-    switch (clientHost) {
-        case 'localhost:4200':
-            apiBaseUrl = 'http://localhost:3000';
-            break;
-        default:
-            break;
-    }
-
-    return fetch(`${apiBaseUrl}/api/v1/auth/me`, { credentials: 'include' }).then((res) =>
-        res.json()
-    );
-}
+import { setTokenInfo, fetchContextUser } from '@lwr-project/data-service';
 
 export default class UserContextProvider extends AuthContextProvider {
     timeOfToken;
