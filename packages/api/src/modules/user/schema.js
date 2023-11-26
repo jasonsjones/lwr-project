@@ -33,7 +33,7 @@ export const createUserSchema = {
     }
 };
 
-export const deleteUserSchema = {
+export const getUserSchema = {
     response: {
         200: {
             type: 'object',
@@ -43,3 +43,5 @@ export const deleteUserSchema = {
         }
     }
 };
+
+export const deleteUserSchema = getUserSchema;

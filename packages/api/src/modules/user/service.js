@@ -23,12 +23,16 @@ export async function getUsers() {
     return await prisma.user.findMany();
 }
 
-export async function getUserByEmailIncludeAuthData(email) {
-    return await prisma.user.findUnique({ where: { email }, include: { authData: true } });
+export async function getUserById(id) {
+    return await prisma.user.findUnique({ where: { id } });
 }
 
 export async function getUserByEmail(email) {
     return await prisma.user.findUnique({ where: { email } });
+}
+
+export async function getUserByEmailIncludeAuthData(email) {
+    return await prisma.user.findUnique({ where: { email }, include: { authData: true } });
 }
 
 export async function deleteUserById(id) {
