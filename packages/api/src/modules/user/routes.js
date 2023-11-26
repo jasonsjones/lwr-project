@@ -1,5 +1,11 @@
-import { authJwt, createUserHandler, deleteUserHandler, getUsersHandler } from './controller.js';
-import { createUserSchema, deleteUserSchema, getUsersSchema } from './schema.js';
+import {
+    authJwt,
+    createUserHandler,
+    deleteUserHandler,
+    getUserHandler,
+    getUsersHandler
+} from './controller.js';
+import { createUserSchema, deleteUserSchema, getUserSchema, getUsersSchema } from './schema.js';
 
 /**
  * Defines endpoints for the user resource
@@ -24,6 +30,7 @@ async function userRoutes(app) {
         createUserHandler
     );
 
+    app.get('/:id', { schema: getUserSchema }, getUserHandler);
     app.delete('/:id', { schema: deleteUserSchema }, deleteUserHandler);
 }
 

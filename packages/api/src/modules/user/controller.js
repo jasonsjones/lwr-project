@@ -1,5 +1,5 @@
 import fastifyPassport from '@fastify/passport';
-import { createUser, deleteUserById, getUsers } from './service.js';
+import { createUser, deleteUserById, getUsers, getUserById } from './service.js';
 
 export async function createUserHandler(req, reply) {
     const user = await createUser(req.body);
@@ -11,6 +11,16 @@ export async function deleteUserHandler(req) {
     const { id } = req.params;
     try {
         const user = await deleteUserById(id);
+        return { user };
+    } catch (err) {
+        return { user: null };
+    }
+}
+
+export async function getUserHandler(req) {
+    const { id } = req.params;
+    try {
+        const user = await getUserById(id);
         return { user };
     } catch (err) {
         return { user: null };
