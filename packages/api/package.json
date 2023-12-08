@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "build": "tsc --build",
-        "dev": "NODE_ENV=development ts-node src/index",
+        "dev": "NODE_ENV=development nodemon src/index.ts --ext js,ts --watch src/",
         "lint": "eslint '**/*.{js,ts}' --max-warnings 0",
         "test": "vitest --run"
     },

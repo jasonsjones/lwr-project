@@ -46,6 +46,13 @@ export async function getMePreHandler(req) {
 }
 
 export async function authUserTokensHandler(req, reply) {
+    const [route, ..._rest] = req.url.split('/').reverse();
+
+    const successMessage =
+        route === 'login' ? 'user login successful' : 'context user tokens updated';
+    const failureMessage =
+        route === 'login' ? 'invalid users credentials' : 'invalid refresh token provided';
+
     const user = req.user;
     const isFromPostman = req.headers['user-agent'].includes('Postman');
 
@@ -60,8 +67,12 @@ export async function authUserTokensHandler(req, reply) {
         });
 
         return {
-            accessToken,
-            user
+            success: true,
+            message: successMessage,
+            results: {
+                accessToken,
+                user
+            }
         };
     }
 
@@ -71,8 +82,12 @@ export async function authUserTokensHandler(req, reply) {
     }
 
     return reply.send({
-        accessToken: null,
-        user: null
+        success: false,
+        message: failureMessage,
+        results: {
+            accessToken: null,
+            user: null
+        }
     });
 }
 
@@ -82,7 +97,11 @@ export function authUserLogoutHandler(_req, reply) {
     });
 
     return reply.send({
-        accessToken: null,
-        user: null
+        success: true,
+        message: 'user logout successful',
+        results: {
+            accessToken: null,
+            user: null
+        }
     });
 }
