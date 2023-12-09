@@ -4,16 +4,25 @@ version: v1
 baseUri: http://localhost:3000/api/v1
 
 types:
-    AuthResponse:
-        type: object 
+    AuthPayload:
+        type: object
         properties:
             accessToken: string | nil
-            user: User | nil 
+            user: User | nil
 
-    UnauthorizedResponse:
-        type: object 
+    AuthResponse:
+        type: object
         properties:
+            success: boolean
             message: string
+            results: AuthPayload
+
+    UnAuthResponse:
+        type: object
+        properties:
+            success: boolean
+            message: string
+            results: AuthPayload
 
     LoginInput:
         type: object
@@ -80,7 +89,7 @@ types:
             201:
                 body:
                     application/json:
-                        type: UserCreateResponse 
+                        type: UserCreateResponse
 /auth:
     /me:
         get:
@@ -104,9 +113,7 @@ types:
                 401:
                     body:
                         application/json:
-                            type: UnauthorizedResponse
-                            example: |
-                                { "message": "Unauthorized" }
+                            type: UnAuthResponse
 
     /logout:
         post:
