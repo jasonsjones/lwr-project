@@ -21,7 +21,7 @@ export default class Login extends LightningElement {
             try {
                 const _response = await login({ email, password });
                 this.error = '';
-                eventEmitter.emit(EVENTS.USER_LOGIN, _response.data);
+                eventEmitter.emit(EVENTS.USER_LOGIN, _response.data?.results);
                 const fromPageRef = this.currentPageRef?.state.from;
 
                 if (fromPageRef && this.navContext) {
