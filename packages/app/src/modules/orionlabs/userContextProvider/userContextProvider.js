@@ -43,21 +43,23 @@ export default class UserContextProvider extends AuthContextProvider {
         // one-time fetch of the context user, returns user if
         // refresh token in cookie is valid
         fetchContextUser(host).then((data) => {
-            const { accessToken, user } = data?.results;
-            this.timeOfToken = accessToken ? Date.now() : null;
-            setTokenInfo({ accessToken, timeOfToken: this.timeOfToken });
-            this.updateContext({
-                value: {
-                    accessToken,
-                    user
-                }
-            });
-            this.dispatchAuthUpdate(accessToken);
+            if (data?.results) {
+                const { accessToken, user } = data.results;
+                this.timeOfToken = accessToken ? Date.now() : null;
+                setTokenInfo({ accessToken, timeOfToken: this.timeOfToken });
+                this.updateContext({
+                    value: {
+                        accessToken,
+                        user
+                    }
+                });
+                this.dispatchAuthUpdate(accessToken);
 
-            // if auth'd and loading /login, redirect to home page
-            const url = new URL(location.href);
-            if (accessToken && url.pathname === '/login') {
-                location.href = '/';
+                // if auth'd and loading /login, redirect to home page
+                const url = new URL(location.href);
+                if (accessToken && url.pathname === '/login') {
+                    location.href = '/';
+                }
             }
         });
     }
