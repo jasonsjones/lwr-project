@@ -5,6 +5,8 @@
     "license": "MIT",
     "scripts": {
         "build": "tsc --build",
+        "clean": "rm -rf dist",
+        "clean:all": "yarn clean && rm -rf node_modules",
         "dev": "NODE_ENV=development nodemon src/index.ts --ext js,ts --watch src/",
         "lint": "eslint '**/*.{js,ts}' --max-warnings 0",
         "test": "vitest --run"
