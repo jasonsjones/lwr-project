@@ -33,15 +33,15 @@
         "@lwc/eslint-plugin-lwc": "1.6.3",
         "@lwc/jest-preset": "14.1.0",
         "@salesforce/wire-service-jest-util": "4.0.2",
-        "@wdio/cli": "8.22.0",
-        "@wdio/local-runner": "8.22.0",
-        "@wdio/mocha-framework": "8.22.0",
-        "@wdio/spec-reporter": "8.21.0",
-        "chromedriver": "119.0.1",
+        "@wdio/cli": "8.32.3",
+        "@wdio/local-runner": "8.32.3",
+        "@wdio/mocha-framework": "8.32.3",
+        "@wdio/spec-reporter": "8.32.2",
+        "chromedriver": "122.0.3",
         "tailwindcss": "3.3.3",
-        "utam": "2.2.0",
+        "utam": "3.0.0",
         "wdio-chromedriver-service": "8.1.1",
-        "wdio-utam-service": "2.2.0"
+        "wdio-utam-service": "3.0.0"
     },
     "engines": {
         "node": ">=18 <19"
