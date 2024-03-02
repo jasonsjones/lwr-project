@@ -12,12 +12,12 @@
         "test": "echo 'data-service tests not yet implemented'"
     },
     "dependencies": {
-        "@luvio/engine": "0.152.2",
-        "@luvio/lwc-luvio": "0.152.2"
+        "@luvio/engine": "0.154.14",
+        "@luvio/lwc-luvio": "0.154.14"
     },
     "devDependencies": {
-        "@luvio/cli": "0.152.2",
-        "@luvio/compiler": "0.152.2"
+        "@luvio/cli": "0.154.14",
+        "@luvio/compiler": "0.154.14"
     },
     "license": "MIT"
 }
