@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { FastifyInstance } from 'fastify';
-import { buildServer } from './server';
+import { getAppInstance } from './server';
 
 const port = parseInt(process.env.PORT) || 3000;
 
@@ -17,7 +17,7 @@ async function registerCleanUpActions(fastify: FastifyInstance): Promise<void> {
 }
 
 async function main(): Promise<void> {
-    const fastify: FastifyInstance = await buildServer();
+    const fastify: FastifyInstance = await getAppInstance();
     await registerCleanUpActions(fastify);
 
     try {

@@ -11,6 +11,8 @@ import indexRoutes from './modules/index/routes';
 import userRoutes from './modules/user/routes';
 import authRoutes from './modules/auth/routes';
 
+let app: FastifyInstance;
+
 const BASE_URL_V1 = '/api/v1';
 const LOCAL_APP_URL = 'http://localhost:4200';
 
@@ -43,7 +45,7 @@ function addCommonSchemas(app) {
 /**
  * Builds the fastify server
  */
-export async function buildServer(): Promise<FastifyInstance> {
+async function buildApp(): Promise<FastifyInstance> {
     const app = Fastify({
         logger: envToLogger[process.env.NODE_ENV] ?? true
     });
@@ -66,5 +68,12 @@ export async function buildServer(): Promise<FastifyInstance> {
     app.register(userRoutes, { prefix: `${BASE_URL_V1}/users` });
     app.register(authRoutes, { prefix: `${BASE_URL_V1}/auth` });
 
+    return app;
+}
+
+export async function getAppInstance() {
+    if (!app) {
+        app = await buildApp();
+    }
     return app;
 }

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { buildServer } from '../../../server';
+import { getAppInstance } from '../../../server';
 
 describe('Index route (GET /)', () => {
     it('returns json with message property', async () => {
-        const app = await buildServer();
+        const app = await getAppInstance();
         const response = await app.inject({
             method: 'GET',
             url: '/'
@@ -16,7 +16,7 @@ describe('Index route (GET /)', () => {
 
 describe('Healthcheck route (GET /healthcheck)', () => {
     it('returns json with status property', async () => {
-        const app = await buildServer();
+        const app = await getAppInstance();
         const response = await app.inject({
             method: 'GET',
             url: '/healthcheck'
