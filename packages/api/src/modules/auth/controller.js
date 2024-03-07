@@ -3,6 +3,14 @@ import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '.
 import { getUserByEmail } from '../user/service.js';
 import { REFRESH_TOKEN_KEY } from './constants.js';
 
+async function handlePassportAuthentication(req, _reply, err, user, _info, _status) {
+    if (err !== null) {
+        console.warn(err);
+    } else if (user) {
+        req.user = user;
+    }
+}
+
 export function authenticateLocal() {
     return fastifyPassport.authenticate(
         'local',
@@ -15,13 +23,17 @@ export function authenticateLocal() {
         //
         // This is added to have more control over the type and shape of the payload returned
         // when the user is unauthorized, basically sonething other than 401 UNAUTHORIZED.
-        async (req, reply, err, user, _info, _status) => {
-            if (err !== null) {
-                console.warn(err);
-            } else if (user) {
-                req.user = user;
-            }
-        }
+        handlePassportAuthentication
+    );
+}
+
+export function authenticateSfdc() {
+    return fastifyPassport.authenticate(
+        'forcedotcom',
+        {
+            session: false
+        },
+        handlePassportAuthentication
     );
 }
 
