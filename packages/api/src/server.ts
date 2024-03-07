@@ -6,6 +6,7 @@ import fastifyPassport from '@fastify/passport';
 import fastifyCors from '@fastify/cors';
 import LocalStrategy from './modules/auth/strategies/local';
 import JwtStrategy from './modules/auth/strategies/jwt';
+import ForceDotComStrategy from './modules/auth/strategies/forcedotcom';
 import indexRoutes from './modules/index/routes';
 import userRoutes from './modules/user/routes';
 import authRoutes from './modules/auth/routes';
@@ -57,6 +58,7 @@ export async function buildServer(): Promise<FastifyInstance> {
     app.register(fastifyPassport.secureSession());
     fastifyPassport.use('local', LocalStrategy);
     fastifyPassport.use('jwt', JwtStrategy);
+    fastifyPassport.use('forcedotcom', ForceDotComStrategy);
 
     addCommonSchemas(app);
 

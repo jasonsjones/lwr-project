@@ -2,6 +2,7 @@ import {
     authUserLogoutHandler,
     authUserTokensHandler,
     authenticateLocal,
+    authenticateSfdc,
     getMePreHandler
 } from './controller.js';
 import { getMeSchema, loginSchema, logoutSchema } from './schema.js';
@@ -31,6 +32,9 @@ async function authRoutes(app) {
         },
         authUserTokensHandler
     );
+
+    app.get('/sfdc', { preValidation: authenticateSfdc() }, () => {});
+    app.get('/sfdc/callback', { preValidation: authenticateSfdc() }, authUserTokensHandler);
 }
 
 export default authRoutes;
