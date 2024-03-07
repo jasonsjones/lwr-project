@@ -21,6 +21,8 @@ jobs:
             SESSION_SECRET: 'super-long-secret-for-the_github_action-session'
             ACCESS_TOKEN_SECRET: 'github_actions-access-token-secret'
             REFRESH_TOKEN_SECRET: 'github_actions-refresh-token-secret'
+            SFDC_CLIENT_ID: 'github_actions-sfdc-client-id'
+            SFDC_CLIENT_SECRET: 'github_actions-sfdc-client-secret'
         steps:
             - name: ⬇️ Checkout repo
               uses: actions/checkout@v3
