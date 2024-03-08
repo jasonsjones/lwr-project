@@ -37,6 +37,29 @@
                 <p class="font-bold">Error</p>
                 <p class="align-center">{error}</p>
             </div>
+
+            <div class="flex items-center mt-4 py-4">
+                <!-- The left line -->
+                <div class="flex-grow h-px bg-slate-400"></div>
+                <!-- text here -->
+                <span class="flex-shrink text-lg text-slate-500 px-4 italic font-light">OR</span>
+                <!-- The right line -->
+                <div class="flex-grow h-px bg-slate-400"></div>
+            </div>
+            <!-- Sign in w/ salesforce button -->
+            <a
+                if:false={isAuthenticated}
+                href="http://localhost:3000/api/v1/auth/sfdc"
+                class="flex justify-center items-center mt-4 w-full p-2 border-2 border-slate-300 rounded-md hover:bg-slate-200"
+            >
+                <img
+                    src="/public/assets/salesforce-logo.svg"
+                    alt="salesforce logo"
+                    width="48"
+                    class="inline mr-2"
+                />
+                <span class="text-center">Login with Salesforce </span>
+            </a>
         </div>
     </div>
 </template>
