@@ -20,6 +20,17 @@ const routes = [
                 pageName: ':pageName'
             }
         }
+    },
+    {
+        id: 'oAuthCallback',
+        uri: '/api/v1/auth/:provider/callback',
+        handler: () => import('orionlabs/oAuthCallbackHandler'),
+        page: {
+            type: 'oauth',
+            attributes: {
+                provider: ':provider'
+            }
+        }
     }
 ];
 
