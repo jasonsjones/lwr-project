@@ -75,6 +75,7 @@ export async function authUserTokensHandler(req, reply) {
         reply.setCookie(REFRESH_TOKEN_KEY, refreshToken, {
             httpOnly: true,
             sameSite: 'none',
+            path: '/',
             secure: !isFromPostman
         });
 
@@ -105,7 +106,7 @@ export async function authUserTokensHandler(req, reply) {
 
 export function authUserLogoutHandler(_req, reply) {
     reply.clearCookie(REFRESH_TOKEN_KEY, {
-        path: '/api/v1/auth'
+        path: '/'
     });
 
     return reply.send({
