@@ -1,3 +1,4 @@
+import { getAppInstance } from '../../../server';
 import passportForceDotCom from 'passport-forcedotcom';
 
 const ForceDotComStrategy = passportForceDotCom.Strategy;
@@ -10,15 +11,17 @@ const strategyOptions = {
 };
 
 async function verifyCallback(token, _refreshToken, profile, done) {
-    console.log(`[Server] Token params:`);
-    console.log(token.params);
+    const app = await getAppInstance();
+
+    app.log.info(`[Server] Token params:`);
+    app.log.info(JSON.stringify(token.params, null, 4));
 
     // eslint-disable-next-line no-unused-vars
     const { _raw, ...profileInfo } = profile;
-    console.log(`[Server] SFDC profile info:`);
-    console.log(profileInfo);
+    app.log.info(`[Server] SFDC profile info:`);
+    app.log.info(JSON.stringify(profileInfo, null, 4));
 
-    const { id } = profile;
+    const { id } = profileInfo;
 
     // TODO: find user or create new user based on provider and id
     // return hard-coded user in the meantime
