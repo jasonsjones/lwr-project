@@ -1,5 +1,6 @@
 import { getAppInstance } from '../../../server';
 import passportForceDotCom from 'passport-forcedotcom';
+import { getUserById, getUserByProviderId } from '../../user/service';
 
 const ForceDotComStrategy = passportForceDotCom.Strategy;
 
@@ -13,19 +14,25 @@ const strategyOptions = {
 async function verifyCallback(token, _refreshToken, profile, done) {
     const app = await getAppInstance();
 
-    app.log.info(`[Server] Token params:`);
-    app.log.info(JSON.stringify(token.params, null, 4));
-
     // eslint-disable-next-line no-unused-vars
     const { _raw, ...profileInfo } = profile;
-    app.log.info(`[Server] SFDC profile info:`);
-    app.log.info(JSON.stringify(profileInfo, null, 4));
 
-    const { id } = profileInfo;
+    const {
+        id,
+        provider,
+        name: { givenName: firstName, familyName: lastName },
+        emails
+    } = profileInfo;
+    const { value: email } = emails[0];
 
-    // TODO: find user or create new user based on provider and id
-    // return hard-coded user in the meantime
-    return done(null, { id, firstName: 'Ed', lastName: 'Baldwin', email: 'ed@nasa.gov' });
+    const user = await getUserByProviderId(id, provider);
+    if (user) {
+        return done(null, user);
+    }
+
+    app.log.info('Salesforce user does not exist; creating now...');
+    // TODO: create user from sfdc profile data, but just return in the meantime
+    return done(null, { id, firstName, lastName, email });
 }
 
 const forcedotcomStrategy = new ForceDotComStrategy(strategyOptions, verifyCallback);

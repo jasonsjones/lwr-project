@@ -22,10 +22,20 @@ model User {
 }
 
 model UserAuthData {
-  passwordHash String
-  tokenVersion Int    @default(0)
-  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId       String @unique
+  id            String          @id @default(uuid())
+  passwordHash  String
+  tokenVersion  Int             @default(0)
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId        String          @unique
+  oauthProvider OauthProvider[]
+}
+
+model OauthProvider {
+  id             String       @id @default(uuid())
+  name           String
+  providerId     String
+  userAuthData   UserAuthData @relation(fields: [userAuthDataId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userAuthDataId String       @unique
 }
 
 enum Role {
