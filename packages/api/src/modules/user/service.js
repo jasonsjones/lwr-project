@@ -31,6 +31,17 @@ export async function getUserByEmail(email) {
     return await prisma.user.findUnique({ where: { email } });
 }
 
+export async function getUserByProviderId(providerId, name) {
+    const authInfo = await prisma.oauthProvider.findFirst({
+        where: { providerId, name },
+        include: { userAuthData: true }
+    });
+    if (authInfo) {
+        return await getUserById(authInfo.userAuthData?.userId);
+    }
+    return null;
+}
+
 export async function getUserByEmailIncludeAuthData(email) {
     return await prisma.user.findUnique({ where: { email }, include: { authData: true } });
 }
