@@ -1,6 +1,6 @@
 import { getAppInstance } from '../../../server';
 import passportForceDotCom from 'passport-forcedotcom';
-import { getUserById, getUserByProviderId } from '../../user/service';
+import { getUserByProviderId } from '../../user/service';
 
 const ForceDotComStrategy = passportForceDotCom.Strategy;
 
