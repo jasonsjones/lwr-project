@@ -90,6 +90,14 @@ types:
                 body:
                     application/json:
                         type: UserCreateResponse
+    /{id}:
+        get:
+            description: Get specific user
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: User
 /auth:
     /login:
         post:
