@@ -1,1 +1,1 @@
-export { getContextUser, login, logout } from '@lwr-project/data-service';
+export { login, logout } from '@lwr-project/data-service';

@@ -91,14 +91,6 @@ types:
                     application/json:
                         type: UserCreateResponse
 /auth:
-    /me:
-        get:
-            description: Get the context user
-            responses:
-                200:
-                    body:
-                        application/json:
-                            type: AuthResponse
     /login:
         post:
             description: Authenticate to application
