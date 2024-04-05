@@ -24,7 +24,7 @@ export default class UserList extends LightningElement {
     @wire(getUsers)
     getAllUsers({ data, error }) {
         this._isLoading = null;
-        setTimeout(() => (this._isLoading = !data && !error), 500);
+        setTimeout(() => (this._isLoading = !data && !error), 300);
 
         if (error) {
             if (error.status == 401) {
@@ -58,7 +58,7 @@ export default class UserList extends LightningElement {
                 ...user,
                 displayName: `${user.firstName} ${user.lastName}`,
                 pageRef: {
-                    type: 'user_detail',
+                    type: 'userDetails',
                     attributes: {
                         userId: user.id
                     }
