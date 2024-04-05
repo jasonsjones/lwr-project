@@ -49,7 +49,12 @@
                                         <td
                                             class="border-b border-slate-600 p-4 pl-8 text-slate-500"
                                         >
-                                            {user.id}
+                                            <orionlabs-link
+                                                key={user.id}
+                                                navigate-to={user.pageRef}
+                                            >
+                                                {user.id}
+                                            </orionlabs-link>
                                         </td>
                                         <td
                                             class="border-b border-slate-600 p-4 pl-8 text-slate-500"

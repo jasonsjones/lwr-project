@@ -22,6 +22,20 @@ const routes = [
         }
     },
     {
+        id: 'userDetails',
+        uri: '/users/:userId',
+        patterns: {
+            userId: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89ABab][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$'
+        },
+        handler: () => import('orionlabs/userDetailsHandler'),
+        page: {
+            type: 'userDetails',
+            attributes: {
+                userId: ':userId'
+            }
+        }
+    },
+    {
         id: 'oAuthCallback',
         uri: '/api/v1/auth/:provider/callback',
         handler: () => import('orionlabs/oAuthCallbackHandler'),

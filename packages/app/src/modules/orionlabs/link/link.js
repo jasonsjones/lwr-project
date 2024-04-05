@@ -38,11 +38,11 @@ export default class Link extends LightningElement {
         }
     }
 
-    computerUrl() {
+    async computerUrl() {
         if (this.navigateTo.type === PageType.EXTERNAL) {
             this._url = this.navigateTo.attributes.url;
         } else if (this.navContext) {
-            this._url = generateUrl(this.navContext, this.navigateTo) || undefined;
+            this._url = await generateUrl(this.navContext, this.navigateTo);
         }
     }
 
