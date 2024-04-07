@@ -56,6 +56,11 @@ types:
         properties:
             users: User[]
 
+    UserDetail:
+        type: object
+        properties:
+            user: User
+
     UserInput:
         type: object
         properties:
@@ -97,7 +102,7 @@ types:
                 200:
                     body:
                         application/json:
-                            type: User
+                            type: UserDetail
 /auth:
     /login:
         post:
