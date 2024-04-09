@@ -1,0 +1,20 @@
+<template>
+    <template lwc:if={isAuthenticated}>
+        <slot name="authenticated"></slot>
+    </template>
+
+    <template lwc:else>
+        <slot name="unauthenticated">
+            <!-- default view when slot is not provided by consumer -->
+            <div class="w-[320]">
+                <orionlabs-link navigate-to={loginPageRef} relationship="noopener noreferrer">
+                    <div
+                        class="p-4 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-800 text-center"
+                    >
+                        Login to view the resource
+                    </div>
+                </orionlabs-link>
+            </div>
+        </slot>
+    </template>
+</template>
