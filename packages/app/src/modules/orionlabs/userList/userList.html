@@ -1,78 +1,66 @@
 <template>
-    <div class="w-3/4 mx-auto flex flex-col items-center">
-        <h1 class="text-3xl font-semibold text-center text-gray-700 mt-8 mb-4">User List</h1>
+    <div class="w-3/4 mx-auto flex flex-col">
+        <h1 class="text-3xl font-bold text-gray-700 mt-8 mb-16">User List</h1>
+        <orionlabs-protected-view>
+            <div slot="authenticated">
+                <template lwc:if={isLoading}>
+                    <orion-spinner></orion-spinner>
+                </template>
 
-        <!-- if no user is authenticated, show the login button -->
-        <template lwc:if={isNotAuthenticated}>
-            <div class="w-[320]">
-                <orionlabs-link navigate-to={loginPageRef} relationship="noopener noreferrer">
-                    <div
-                        class="p-4 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-800 text-center"
-                    >
-                        Login to checkout the users!
-                    </div>
-                </orionlabs-link>
-            </div>
-        </template>
-        <!-- if the user is authenticated, show the loading spinner until the users are fetched -->
-        <template lwc:if={isAuthenticated}>
-            <template lwc:if={isLoading}>
-                <orion-spinner></orion-spinner>
-            </template>
-
-            <template lwc:else>
-                <div class="not-prose py-4 bg-slate-200 rounded-xl">
-                    <div class="overflow-hidden my-2">
-                        <table class="border-collapse table-fixed w-full">
-                            <thead>
-                                <tr>
-                                    <th
-                                        class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
-                                    >
-                                        Id
-                                    </th>
-                                    <th
-                                        class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
-                                    >
-                                        Name
-                                    </th>
-                                    <th
-                                        class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
-                                    >
-                                        Email
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <template for:each={users} for:item="user">
-                                    <tr key={user.id}>
-                                        <td
-                                            class="border-b border-slate-600 p-4 pl-8 text-slate-500"
+                <template lwc:else>
+                    <div class="not-prose py-4 bg-slate-200 rounded-xl">
+                        <div class="overflow-hidden my-2">
+                            <table class="border-collapse table-fixed w-full">
+                                <thead>
+                                    <tr>
+                                        <th
+                                            class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
                                         >
-                                            <orionlabs-link
-                                                key={user.id}
-                                                navigate-to={user.pageRef}
-                                            >
-                                                {user.id}
-                                            </orionlabs-link>
-                                        </td>
-                                        <td
-                                            class="border-b border-slate-600 p-4 pl-8 text-slate-500"
+                                            Id
+                                        </th>
+                                        <th
+                                            class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
                                         >
-                                            {user.displayName}
-                                        </td>
-                                        <td
-                                            class="border-b border-slate-600 p-4 pl-8 text-slate-500"
+                                            Name
+                                        </th>
+                                        <th
+                                            class="border-b border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-gray-700 text-left"
                                         >
-                                            {user.email}
-                                        </td>
+                                            Email
+                                        </th>
                                     </tr>
-                                </template>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <template for:each={users} for:item="user">
+                                        <tr key={user.id}>
+                                            <td
+                                                class="border-b border-slate-600 p-4 pl-8 text-slate-500"
+                                            >
+                                                <orionlabs-link
+                                                    key={user.id}
+                                                    navigate-to={user.pageRef}
+                                                >
+                                                    {user.id}
+                                                </orionlabs-link>
+                                            </td>
+                                            <td
+                                                class="border-b border-slate-600 p-4 pl-8 text-slate-500"
+                                            >
+                                                {user.displayName}
+                                            </td>
+                                            <td
+                                                class="border-b border-slate-600 p-4 pl-8 text-slate-500"
+                                            >
+                                                {user.email}
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            </template>
-        </template>
+                </template>
+            </div>
+        </orionlabs-protected-view>
     </div>
 </template>

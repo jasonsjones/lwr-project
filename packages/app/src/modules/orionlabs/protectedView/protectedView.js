@@ -1,6 +1,8 @@
-import { LightningElement, wire } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { CurrentPageReference, NavigationContext } from 'lwr/navigation';
 import { getAuthContext } from 'orion/authContextProvider';
+
+const DEFAULT_BUTTON_TEXT = 'Log in to view resource';
 
 export default class ProtectedView extends LightningElement {
     _authUser;
@@ -16,6 +18,14 @@ export default class ProtectedView extends LightningElement {
         if (data?.value) {
             this._authUser = data?.value?.user;
         }
+    }
+
+    @api
+    get unAuthenticatedButtonText() {
+        return this._unAuthenticatedButtonText ?? DEFAULT_BUTTON_TEXT;
+    }
+    set unAuthenticatedButtonText(value) {
+        this._unAuthenticatedButtonText = value;
     }
 
     get isAuthenticated() {
