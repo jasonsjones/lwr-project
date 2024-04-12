@@ -40,14 +40,6 @@ export default class UserList extends LightningElement {
         }
     }
 
-    get isAuthenticated() {
-        return !!this._authUser;
-    }
-
-    get isNotAuthenticated() {
-        return !this.isAuthenticated;
-    }
-
     get isLoading() {
         return this._isLoading ?? true;
     }
@@ -65,17 +57,5 @@ export default class UserList extends LightningElement {
                 }
             };
         });
-    }
-
-    get loginPageRef() {
-        return {
-            type: 'namedPage',
-            attributes: {
-                pageName: 'login'
-            },
-            state: {
-                from: JSON.stringify(this.currentPageRef)
-            }
-        };
     }
 }
