@@ -11,6 +11,7 @@
                     </div>
                 </div>
             </a>
+
             <div class="flex grow items-center justify-between">
                 <!-- left side links -->
                 <div class="flex gap-8">
@@ -22,6 +23,7 @@
                         ></orionlabs-nav-link>
                     </template>
                 </div>
+
                 <!-- right side links -->
                 <div class="flex gap-8">
                     <div lwc:if={hasUser} class="flex items-center gap-8">
@@ -33,6 +35,7 @@
                             Logout
                         </button>
                     </div>
+
                     <template lwc:else for:each={rightNavLinks} for:item="link">
                         <orionlabs-nav-link
                             key={link.id}
